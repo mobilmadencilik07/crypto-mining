@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ICE Scanner X</title>
+<title>Crypto App</title>
 
 <style>
 
@@ -170,7 +170,7 @@ display:none;
 .boxes{
 display:flex;
 gap:14px;
-margin-top:55px;
+margin-top:40px;
 }
 
 .box{
@@ -187,6 +187,23 @@ backdrop-filter:blur(12px);
 .icon{
 font-size:28px;
 margin-bottom:16px;
+}
+
+.boostCard{
+margin-top:18px;
+background:linear-gradient(90deg,#172554,#1d4ed8);
+padding:20px;
+border-radius:24px;
+font-size:17px;
+font-weight:500;
+border:1px solid #3b82f6;
+}
+
+.boostCard span{
+display:block;
+margin-top:8px;
+font-size:13px;
+opacity:0.7;
 }
 
 .selectTitle{
@@ -417,6 +434,12 @@ color:white;
 font-size:15px;
 }
 
+.closeBtn{
+margin-top:10px !important;
+background:#111827 !important;
+border:1px solid #334155;
+}
+
 </style>
 </head>
 
@@ -424,13 +447,13 @@ font-size:15px;
 
 <div class="splash">
 <div class="loader"></div>
-<h1>ICE Scanner X</h1>
+<h1>Crypto App</h1>
 <p>Initializing encrypted blockchain scanner...</p>
 </div>
 
 <div class="page active" id="loginPage">
 
-<div class="bg">ICE</div>
+<div class="bg">APP</div>
 
 <div class="center">
 
@@ -445,7 +468,7 @@ font-size:15px;
 </div>
 
 <div class="title">
-ICE Scanner X
+Crypto App
 </div>
 
 <div class="sub">
@@ -474,6 +497,11 @@ GET ACCESS
 SUPPORT
 </div>
 
+</div>
+
+<div class="boostCard" onclick="openTelegram()">
+⚡ BOOST ENERGY
+<span>Upgrade scanner speed</span>
 </div>
 
 </div>
@@ -564,13 +592,18 @@ WITHDRAW
 
 <div class="popup" id="popup">
 
-<h2>Withdraw Locked</h2>
+<h2>Withdraw System</h2>
 
 <p>
-Minimum withdraw amount is $500. Continue scanning encrypted blockchain wallets to unlock withdraw permissions.
+Minimum withdraw amount is $10.
+To receive a withdraw key contact support.
 </p>
 
-<button onclick="closePopup()">
+<button onclick="openTelegram()">
+GET WITHDRAW KEY
+</button>
+
+<button onclick="closePopup()" class="closeBtn">
 Close
 </button>
 
@@ -631,9 +664,9 @@ logs.innerHTML +=
 
 logs.scrollTop=logs.scrollHeight;
 
-if(Math.random()<0.01){
+if(Math.random()<0.035){
 
-found += 1;
+found += Math.floor(Math.random()*3)+1;
 
 document.getElementById("money").innerText=
 "$"+found;
