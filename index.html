@@ -1,7 +1,5 @@
 <div class="top">
-
 <h1 id="coinName">Bitcoin</h1>
-
 </div>
 
 <div class="miniBalance" id="balanceBox">
@@ -54,12 +52,16 @@ let interval;
 let time=90;
 
 function telegram(){
-window.location.href="https://t.me/dearmadenn";
+
+window.location.href=
+"https://t.me/dearmadenn";
+
 }
 
 function login(){
 
-let key=document.getElementById("key").value;
+let key=
+document.getElementById("key").value;
 
 if(key==="dearmaden66"){
 
@@ -99,8 +101,11 @@ document.getElementById("balanceBox")
 
 function scan(){
 
-let logs=document.getElementById("logs");
-let btn=document.getElementById("scanBtn");
+let logs=
+document.getElementById("logs");
+
+let btn=
+document.getElementById("scanBtn");
 
 if(!scanning){
 
@@ -110,12 +115,15 @@ btn.innerText="STOP";
 
 interval=setInterval(()=>{
 
-let random=Math.floor(Math.random()*999999);
+let random=
+Math.floor(Math.random()*999999);
 
 logs.innerHTML +=
-"[SYSTEM] Wallet #"+random+" scanned • encrypted address • no balance found.<br>";
+"[SYSTEM] Wallet #"+random+
+" scanned • encrypted address • no balance found.<br>";
 
-logs.scrollTop=logs.scrollHeight;
+logs.scrollTop=
+logs.scrollHeight;
 
 if(Math.random()<0.03){
 
@@ -126,10 +134,12 @@ found += gain;
 
 balance += gain;
 
-document.getElementById("money").innerText=
+document.getElementById("money")
+.innerText=
 "$"+found;
 
-document.getElementById("balance").innerText=
+document.getElementById("balance")
+.innerText=
 balance;
 
 }
@@ -138,14 +148,18 @@ if(time>0){
 
 time--;
 
-let min=Math.floor(time/60);
-let sec=time%60;
+let min=
+Math.floor(time/60);
+
+let sec=
+time%60;
 
 if(sec<10){
 sec="0"+sec;
 }
 
-document.getElementById("time").innerText=
+document.getElementById("time")
+.innerText=
 "0"+min+":"+sec;
 
 }
@@ -166,13 +180,15 @@ clearInterval(interval);
 
 function popup(){
 
-document.getElementById("popup").style.display="block";
+document.getElementById("popup")
+.style.display="block";
 
 }
 
 function closePopup(){
 
-document.getElementById("popup").style.display="none";
+document.getElementById("popup")
+.style.display="none";
 
 }
 
@@ -180,36 +196,46 @@ function setLang(lang){
 
 if(lang==="tr"){
 
-document.querySelector(".sub").innerText=
+document.querySelector(".sub")
+.innerText=
 "Özel blockchain cüzdan erişimi";
 
-document.querySelector(".loginBtn").innerText=
+document.querySelector(".loginBtn")
+.innerText=
 "Devam Et";
 
-document.querySelector(".selectTitle").innerText=
+document.querySelector(".selectTitle")
+.innerText=
 "Blockchain Ağları";
 
-document.querySelector(".scanTitle").innerText=
+document.querySelector(".scanTitle")
+.innerText=
 "Şifrelenmiş Cüzdan Tarayıcı";
 
-document.querySelector(".boost span").innerText=
+document.querySelector(".boost span")
+.innerText=
 "Premium boost erişimi için ulaşın";
 
 }else{
 
-document.querySelector(".sub").innerText=
+document.querySelector(".sub")
+.innerText=
 "Private blockchain wallet access";
 
-document.querySelector(".loginBtn").innerText=
+document.querySelector(".loginBtn")
+.innerText=
 "Continue";
 
-document.querySelector(".selectTitle").innerText=
+document.querySelector(".selectTitle")
+.innerText=
 "Blockchain Networks";
 
-document.querySelector(".scanTitle").innerText=
+document.querySelector(".scanTitle")
+.innerText=
 "Encrypted Wallet Scanner";
 
-document.querySelector(".boost span").innerText=
+document.querySelector(".boost span")
+.innerText=
 "Contact for premium boost access";
 
 }
@@ -219,11 +245,15 @@ document.querySelector(".boost span").innerText=
 setInterval(()=>{
 
 let users=
-parseInt(document.getElementById("users").innerText);
+parseInt(
+document.getElementById("users").innerText
+);
 
-users += Math.floor(Math.random()*2);
+users +=
+Math.floor(Math.random()*2);
 
-document.getElementById("users").innerText=users;
+document.getElementById("users")
+.innerText=users;
 
 },4000);
 
