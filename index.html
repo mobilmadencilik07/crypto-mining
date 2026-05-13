@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Crypto App</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -73,6 +72,7 @@ display:none;
 min-height:100vh;
 padding:18px;
 overflow:auto;
+padding-bottom:90px;
 }
 
 .active{
@@ -231,6 +231,8 @@ border-radius:20px;
 
 font-size:12px;
 
+text-align:center;
+
 }
 
 /* SELECT */
@@ -281,6 +283,10 @@ font-weight:bold;
 .btc{background:#f7931a;}
 .eth{background:#627eea;}
 .sol{background:#14f195;color:black;}
+.bnb{background:#f3ba2f;color:black;}
+.xrp{background:#111827;border:1px solid #334155;}
+.ton{background:#0098ea;}
+.ltc{background:#8c8c8c;}
 
 .coin h2{
 font-size:15px;
@@ -431,6 +437,12 @@ linear-gradient(
 box-shadow:
 0 0 24px rgba(37,99,235,.25);
 
+transition:.2s;
+
+}
+
+.btn:active{
+transform:scale(.96);
 }
 
 /* POPUP */
@@ -502,6 +514,27 @@ font-weight:700;
 background:#111827 !important;
 }
 
+/* SETTINGS */
+
+.settingItem{
+
+margin-top:16px;
+
+background:
+rgba(255,255,255,.04);
+
+padding:14px;
+
+border-radius:16px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+font-size:13px;
+
+}
+
 /* BOTTOM */
 
 .bottom{
@@ -520,13 +553,45 @@ backdrop-filter:blur(16px);
 
 border-top:1px solid rgba(255,255,255,.08);
 
-padding:12px;
+padding:10px 4px;
 
 display:flex;
 justify-content:space-around;
 
-font-size:11px;
+z-index:999;
 
+}
+
+.navBtn{
+
+flex:1;
+
+text-align:center;
+
+font-size:10px;
+
+opacity:.75;
+
+padding:8px 0;
+
+border-radius:14px;
+
+transition:.2s;
+
+}
+
+.navBtn:active{
+
+transform:scale(.92);
+
+background:
+rgba(255,255,255,.06);
+
+}
+
+.activeNav{
+color:#60a5fa;
+opacity:1;
 }
 
 </style>
@@ -605,56 +670,83 @@ Blockchain Networks
 </div>
 
 <div class="coin" onclick="openMiner('Bitcoin')">
-
 <div class="left">
-
 <div class="logo btc">₿</div>
-
 <div>
 <div class="tag">RECOMMENDED</div>
 <h2>Bitcoin</h2>
 <p>High speed blockchain</p>
 </div>
-
 </div>
-
 →
-
 </div>
 
 <div class="coin" onclick="openMiner('Ethereum')">
-
 <div class="left">
-
 <div class="logo eth">◆</div>
-
 <div>
 <h2>Ethereum</h2>
 <p>Encrypted smart chain</p>
 </div>
-
 </div>
-
 →
-
 </div>
 
 <div class="coin" onclick="openMiner('Solana')">
-
 <div class="left">
-
 <div class="logo sol">◎</div>
-
 <div>
 <div class="tag">POPULAR</div>
 <h2>Solana</h2>
 <p>Fast blockchain network</p>
 </div>
-
+</div>
+→
 </div>
 
+<div class="coin" onclick="openMiner('BNB')">
+<div class="left">
+<div class="logo bnb">◈</div>
+<div>
+<h2>BNB</h2>
+<p>Secure wallet network</p>
+</div>
+</div>
 →
+</div>
 
+<div class="coin" onclick="openMiner('XRP')">
+<div class="left">
+<div class="logo xrp">✕</div>
+<div>
+<h2>XRP</h2>
+<p>Low latency transfers</p>
+</div>
+</div>
+→
+</div>
+
+<div class="coin" onclick="openMiner('TON')">
+<div class="left">
+<div class="logo ton">◉</div>
+<div>
+<div class="tag">TRENDING</div>
+<h2>TON</h2>
+<p>Telegram blockchain</p>
+</div>
+</div>
+→
+</div>
+
+<div class="coin" onclick="openMiner('Litecoin')">
+<div class="left">
+<div class="logo ltc">Ł</div>
+<div>
+<h2>Litecoin</h2>
+<p>Fast secure payments</p>
+</div>
+</div>
+→
 </div>
 
 </div>
@@ -680,9 +772,7 @@ Encrypted Wallet Scanner
 </div>
 
 <div class="logs" id="logs">
-
 [SYSTEM] Scanner initialized...<br>
-
 </div>
 
 <div class="found">
@@ -691,23 +781,18 @@ Found:
 </div>
 
 <div class="estimate">
-
 • Encrypted node scanning<br>
 • Wallet hash analysis<br>
 • Secure blockchain indexing<br>
 • Network synchronization active
-
 </div>
 
 <div class="boost" onclick="telegram()">
-
 ⚡ BOOST SCANNER
 <br>
-
 <span style="opacity:.6;">
 Contact for premium boost access
 </span>
-
 </div>
 
 <div class="buttons">
@@ -724,7 +809,7 @@ WITHDRAW
 
 </div>
 
-<!-- POPUP -->
+<!-- WITHDRAW -->
 
 <div class="popup" id="popup">
 
@@ -749,20 +834,64 @@ Close
 
 </div>
 
-<!-- BOTTOM -->
+<!-- SETTINGS -->
+
+<div class="popup" id="settingsPopup">
+
+<h2>
+⚙️ Settings
+</h2>
+
+<p>
+Wallet & payment settings
+</p>
+
+<div class="settingItem">
+<span>🏦 IBAN</span>
+<span>›</span>
+</div>
+
+<input id="ibanInput" placeholder="IBAN">
+
+<div class="settingItem">
+<span>💳 Address</span>
+<span>›</span>
+</div>
+
+<input id="addressInput" placeholder="Wallet Address">
+
+<button onclick="saveSettings()">
+SAVE SETTINGS
+</button>
+
+<button onclick="telegram()">
+💬 LIVE SUPPORT
+</button>
+
+<button class="closeBtn" onclick="closeSettings()">
+Close
+</button>
+
+</div>
+
+<!-- NAVBAR -->
 
 <div class="bottom">
 
-<div>
-HOME
+<div class="navBtn activeNav" onclick="goHome()">
+🏠<br>HOME
 </div>
 
-<div>
-SEARCH
+<div class="navBtn" onclick="goSearch()">
+🔎<br>SEARCH
 </div>
 
-<div onclick="telegram()">
-SUPPORT
+<div class="navBtn" onclick="openSettings()">
+⚙️<br>SETTINGS
+</div>
+
+<div class="navBtn" onclick="telegram()">
+💬<br>SUPPORT
 </div>
 
 </div>
@@ -885,6 +1014,73 @@ function closePopup(){
 
 document.getElementById("popup")
 .style.display="none";
+
+}
+
+function openSettings(){
+
+document.getElementById("settingsPopup")
+.style.display="block";
+
+}
+
+function closeSettings(){
+
+document.getElementById("settingsPopup")
+.style.display="none";
+
+}
+
+function saveSettings(){
+
+let iban=
+document.getElementById("ibanInput").value;
+
+let address=
+document.getElementById("addressInput").value;
+
+localStorage.setItem("iban",iban);
+
+localStorage.setItem("address",address);
+
+alert("Settings saved");
+
+}
+
+function goHome(){
+
+document.getElementById("minerPage")
+.classList.remove("active");
+
+document.getElementById("selectPage")
+.classList.add("active");
+
+}
+
+function goSearch(){
+
+document.getElementById("selectPage")
+.classList.add("active");
+
+}
+
+window.onload=function(){
+
+if(localStorage.getItem("iban")){
+
+document.getElementById("ibanInput")
+.value=
+localStorage.getItem("iban");
+
+}
+
+if(localStorage.getItem("address")){
+
+document.getElementById("addressInput")
+.value=
+localStorage.getItem("address");
+
+}
 
 }
 
