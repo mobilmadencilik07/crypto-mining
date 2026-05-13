@@ -15,13 +15,13 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Inter',sans-serif;
+-webkit-tap-highlight-color:transparent;
 }
 
 body{
-background:#020617;
+background:#030712;
 color:white;
 overflow:hidden;
-font-weight:300;
 }
 
 .page{
@@ -34,9 +34,56 @@ padding:24px;
 display:block;
 }
 
+.splash{
+position:fixed;
+inset:0;
+background:#030712;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+animation:hideSplash 1s forwards;
+animation-delay:2s;
+}
+
+@keyframes hideSplash{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+.loader{
+width:90px;
+height:90px;
+border-radius:50%;
+border:4px solid #1e293b;
+border-top:4px solid #60a5fa;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.splash h1{
+margin-top:25px;
+font-size:32px;
+font-weight:600;
+}
+
+.splash p{
+opacity:0.6;
+margin-top:8px;
+font-size:14px;
+}
+
 .bg{
 position:absolute;
-right:-20px;
+right:-30px;
 top:-30px;
 font-size:180px;
 font-weight:700;
@@ -67,7 +114,7 @@ input{
 width:100%;
 padding:18px;
 border:none;
-border-radius:22px;
+border-radius:24px;
 background:#0f172a;
 border:1px solid #1e293b;
 color:white;
@@ -79,16 +126,16 @@ outline:none;
 width:100%;
 padding:18px;
 border:none;
-border-radius:22px;
+border-radius:24px;
 margin-top:18px;
-background:white;
-color:black;
-font-size:17px;
+background:linear-gradient(90deg,#60a5fa,#2563eb);
+color:white;
+font-size:16px;
 font-weight:500;
 }
 
 .error{
-margin-top:15px;
+margin-top:14px;
 color:#ef4444;
 font-size:14px;
 display:none;
@@ -102,30 +149,54 @@ margin-top:55px;
 
 .box{
 flex:1;
-background:rgba(15,23,42,0.9);
+background:rgba(15,23,42,0.92);
 border:1px solid #1e293b;
 padding:28px 10px;
-border-radius:26px;
-font-size:15px;
+border-radius:28px;
+font-size:14px;
 font-weight:500;
 backdrop-filter:blur(12px);
-box-shadow:0 0 25px rgba(0,0,0,0.3);
 }
 
 .icon{
 font-size:28px;
-margin-bottom:18px;
+margin-bottom:16px;
 }
 
 .selectTitle{
-font-size:30px;
+font-size:28px;
 font-weight:500;
-margin-bottom:24px;
-letter-spacing:-0.5px;
+margin-bottom:22px;
+}
+
+.stats{
+display:flex;
+gap:12px;
+margin-bottom:20px;
+}
+
+.stat{
+flex:1;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:18px;
+border-radius:22px;
+}
+
+.stat h3{
+font-size:13px;
+opacity:0.6;
+font-weight:400;
+}
+
+.stat p{
+margin-top:10px;
+font-size:18px;
+font-weight:500;
 }
 
 .coin{
-background:rgba(15,23,42,0.92);
+background:#0f172a;
 border:1px solid #1e293b;
 padding:18px;
 border-radius:24px;
@@ -133,8 +204,6 @@ margin-bottom:14px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-backdrop-filter:blur(10px);
-box-shadow:0 0 25px rgba(0,0,0,0.25);
 }
 
 .left{
@@ -164,7 +233,7 @@ font-weight:500;
 }
 
 .arrow{
-opacity:0.45;
+opacity:0.4;
 font-size:22px;
 }
 
@@ -181,22 +250,21 @@ font-weight:500;
 }
 
 .energy{
-background:white;
-color:black;
-padding:7px 14px;
+background:#111827;
+padding:8px 14px;
 border-radius:30px;
-font-size:14px;
-font-weight:500;
+font-size:13px;
+border:1px solid #1e293b;
 }
 
 .scanTitle{
-font-size:34px;
+font-size:30px;
 font-weight:500;
 margin-bottom:20px;
 }
 
 .logs{
-height:260px;
+height:240px;
 overflow:auto;
 background:#0f172a;
 border:1px solid #1e293b;
@@ -221,10 +289,36 @@ font-weight:500;
 color:#22c55e;
 }
 
+.chart{
+height:90px;
+background:linear-gradient(180deg,#0f172a,#020617);
+border-radius:22px;
+margin-top:18px;
+position:relative;
+overflow:hidden;
+border:1px solid #1e293b;
+}
+
+.line{
+position:absolute;
+width:160%;
+height:2px;
+background:#60a5fa;
+top:50%;
+left:-20%;
+transform:rotate(-6deg);
+animation:move 4s linear infinite;
+}
+
+@keyframes move{
+0%{transform:translateX(-20%) rotate(-6deg);}
+100%{transform:translateX(20%) rotate(-6deg);}
+}
+
 .buttons{
 display:flex;
 gap:14px;
-margin-top:22px;
+margin-top:20px;
 }
 
 .btn{
@@ -232,13 +326,13 @@ flex:1;
 padding:20px;
 border-radius:24px;
 text-align:center;
-font-size:16px;
+font-size:15px;
 font-weight:500;
 }
 
 .start{
-background:#190909;
-border:1px solid #7f1d1d;
+background:#172554;
+border:1px solid #1d4ed8;
 }
 
 .withdraw{
@@ -256,8 +350,8 @@ border-top:1px solid #1e293b;
 padding:16px;
 display:flex;
 justify-content:space-around;
-font-size:13px;
-opacity:0.7;
+font-size:12px;
+opacity:0.75;
 }
 
 .popup{
@@ -272,18 +366,17 @@ border-radius:30px;
 width:85%;
 display:none;
 z-index:999;
-box-shadow:0 0 50px rgba(0,0,0,0.45);
 }
 
 .popup h2{
 font-size:24px;
-margin-bottom:15px;
+margin-bottom:14px;
 font-weight:500;
 }
 
 .popup p{
-opacity:0.7;
-line-height:1.7;
+opacity:0.65;
+line-height:1.8;
 font-size:14px;
 }
 
@@ -293,15 +386,21 @@ width:100%;
 padding:16px;
 border:none;
 border-radius:18px;
-background:white;
+background:#2563eb;
+color:white;
 font-size:15px;
-font-weight:500;
 }
 
 </style>
 </head>
 
 <body>
+
+<div class="splash">
+<div class="loader"></div>
+<h1>ICE Scanner X</h1>
+<p>Initializing encrypted blockchain scanner...</p>
+</div>
 
 <div class="page active" id="loginPage">
 
@@ -310,11 +409,11 @@ font-weight:500;
 <div class="center">
 
 <div class="title">
-ICE Scanner
+ICE Scanner X
 </div>
 
 <div class="sub">
-Private blockchain wallet scanner access
+Private blockchain wallet access
 </div>
 
 <input id="keyInput" placeholder="Access Key">
@@ -348,7 +447,21 @@ SUPPORT
 <div class="page" id="selectPage">
 
 <div class="selectTitle">
-Choose blockchain
+Blockchain Networks
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h3>ONLINE</h3>
+<p>12,482</p>
+</div>
+
+<div class="stat">
+<h3>SCANNED</h3>
+<p>2.4M</p>
+</div>
+
 </div>
 
 <div class="coin" onclick="openMiner('Bitcoin')">
@@ -381,11 +494,11 @@ Choose blockchain
 
 <div class="top">
 <h1 id="coinName">Bitcoin</h1>
-<div class="energy">⚡ 27</div>
+<div class="energy">⚡ 27 ENERGY</div>
 </div>
 
 <div class="scanTitle">
-Wallet Scanner
+Encrypted Wallet Scanner
 </div>
 
 <div class="logs" id="logs"></div>
@@ -393,6 +506,10 @@ Wallet Scanner
 <div class="found">
 Found:
 <span class="green" id="money">$0</span>
+</div>
+
+<div class="chart">
+<div class="line"></div>
 </div>
 
 <div class="buttons">
@@ -415,7 +532,7 @@ WITHDRAW
 
 <p>
 Minimum withdraw amount is $500.  
-Continue scanning encrypted blockchain wallets to unlock withdraw access.
+Continue scanning encrypted blockchain wallets to unlock withdraw permissions.
 </p>
 
 <button onclick="closePopup()">
@@ -479,16 +596,16 @@ logs.innerHTML +=
 
 logs.scrollTop=logs.scrollHeight;
 
-if(Math.random()<0.015){
+if(Math.random()<0.01){
 
-found += Math.floor(Math.random()*2)+1;
+found += 1;
 
 document.getElementById("money").innerText=
 "$"+found;
 
 }
 
-},700);
+},900);
 
 }
 
