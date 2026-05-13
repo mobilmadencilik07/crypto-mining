@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crypto App</title>
+<title>Crypto ICE 3.0</title>
 
 <style>
 
@@ -21,294 +21,268 @@ color:white;
 overflow:hidden;
 }
 
-.moneyRain{
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden;
-opacity:.06;
-}
-
-.moneyRain span{
-position:absolute;
-top:-50px;
-font-size:24px;
-animation:fall 12s linear infinite;
-}
-
-.moneyRain span:nth-child(1){left:10%;animation-delay:0s;}
-.moneyRain span:nth-child(2){left:30%;animation-delay:2s;}
-.moneyRain span:nth-child(3){left:50%;animation-delay:4s;}
-.moneyRain span:nth-child(4){left:70%;animation-delay:1s;}
-.moneyRain span:nth-child(5){left:90%;animation-delay:3s;}
-
-@keyframes fall{
-0%{
-transform:translateY(-100px);
-opacity:0;
-}
-10%{
-opacity:1;
-}
-100%{
-transform:translateY(120vh);
-opacity:0;
-}
-}
-
 .page{
-display:none;
 min-height:100vh;
-padding:18px;
-overflow:auto;
+padding:20px;
+position:relative;
+overflow:hidden;
+
+background:
+linear-gradient(
+180deg,
+#040b2d,
+#071b52,
+#06163b
+);
+
 }
 
-.active{
-display:block;
+.page::before{
+
+content:"";
+position:absolute;
+inset:0;
+
+background:
+repeating-linear-gradient(
+75deg,
+rgba(0,140,255,.18) 0px,
+rgba(0,140,255,.18) 40px,
+transparent 40px,
+transparent 120px
+);
+
+filter:blur(2px);
+
+animation:bgmove 8s linear infinite;
+
 }
 
-.center{
-padding-top:50px;
-text-align:center;
+@keyframes bgmove{
+
+0%{
+transform:translateX(0);
 }
 
-.title{
-font-size:34px;
-font-weight:bold;
+100%{
+transform:translateX(120px);
 }
 
-.sub{
-margin-top:8px;
-opacity:.6;
-font-size:13px;
-}
-
-.users{
-margin-top:18px;
-background:#0f172a;
-padding:12px;
-border-radius:14px;
-border:1px solid #1e293b;
-font-size:13px;
-}
-
-.lang{
-display:flex;
-gap:8px;
-justify-content:center;
-margin-bottom:14px;
-}
-
-.lang button{
-background:#111827;
-border:none;
-color:white;
-padding:8px 14px;
-border-radius:12px;
-}
-
-input{
-width:100%;
-padding:16px;
-margin-top:12px;
-background:#0f172a;
-border:1px solid #1e293b;
-border-radius:18px;
-color:white;
-font-size:14px;
-outline:none;
-}
-
-.loginBtn{
-width:100%;
-padding:16px;
-margin-top:14px;
-border:none;
-border-radius:18px;
-background:#2563eb;
-color:white;
-font-size:14px;
-font-weight:bold;
-}
-
-.error{
-margin-top:12px;
-color:#ef4444;
-display:none;
-font-size:13px;
-}
-
-.boxes{
-display:flex;
-gap:10px;
-margin-top:25px;
-}
-
-.box{
-flex:1;
-background:#0f172a;
-border:1px solid #1e293b;
-padding:20px 10px;
-border-radius:20px;
-font-size:12px;
-text-align:center;
-}
-
-.selectTitle{
-font-size:25px;
-font-weight:bold;
-margin-bottom:20px;
-}
-
-.coin{
-background:#0f172a;
-border:1px solid #1e293b;
-padding:15px;
-border-radius:18px;
-margin-bottom:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.left{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.logo{
-width:42px;
-height:42px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-}
-
-.btc{background:#f7931a;}
-.eth{background:#627eea;}
-.sol{background:#14f195;color:black;}
-.bnb{background:#f3ba2f;color:black;}
-
-.coin h2{
-font-size:15px;
-}
-
-.coin p{
-font-size:11px;
-opacity:.5;
-margin-top:2px;
-}
-
-.tag{
-background:#2563eb;
-padding:4px 8px;
-border-radius:30px;
-font-size:9px;
-margin-bottom:5px;
-display:inline-block;
 }
 
 .top{
+
 display:flex;
-justify-content:space-between;
 align-items:center;
-margin-bottom:14px;
+gap:18px;
+
+position:relative;
+z-index:2;
+
 }
 
-.energy{
-background:#111827;
-padding:7px 12px;
-border-radius:30px;
-font-size:11px;
-border:1px solid #1e293b;
+.backBtn{
+
+width:34px;
+height:34px;
+
+border-radius:50%;
+
+background:#172554;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:18px;
+
 }
 
-.scanTitle{
-font-size:24px;
+.title{
+
+font-size:30px;
 font-weight:bold;
+letter-spacing:2px;
+
+}
+
+.foundTitle{
+
+margin-top:70px;
+
+font-size:42px;
+font-weight:bold;
+
+text-align:center;
+
+position:relative;
+z-index:2;
+
+}
+
+.scanBox{
+
+margin-top:40px;
+
+background:
+linear-gradient(
+180deg,
+rgba(35,90,255,.5),
+rgba(17,24,39,.9)
+);
+
+border:2px solid rgba(96,165,250,.4);
+
+border-radius:40px;
+
+padding:22px;
+
+position:relative;
+z-index:2;
+
+backdrop-filter:blur(10px);
+
+}
+
+.count{
+
+text-align:center;
+
+font-size:18px;
+
 margin-bottom:16px;
+
+opacity:.9;
+
 }
 
-.logs{
-height:200px;
-overflow:auto;
-background:#0f172a;
-border:1px solid #1e293b;
+.terminal{
+
+height:260px;
+
+background:
+linear-gradient(
+180deg,
+rgba(10,15,40,.9),
+rgba(20,20,60,.7)
+);
+
+border-radius:24px;
+
 padding:14px;
-border-radius:20px;
-font-size:11px;
-line-height:1.8;
-opacity:.8;
+
+overflow:auto;
+
+font-size:12px;
+
+line-height:1.9;
+
+color:#22c55e;
+
+font-family:monospace;
+
+box-shadow:
+inset 0 0 20px rgba(0,0,0,.5);
+
 }
 
-.logs::-webkit-scrollbar{
+.terminal::-webkit-scrollbar{
 display:none;
 }
 
-.estimate{
-margin-top:12px;
-background:#111827;
-padding:14px;
-border-radius:16px;
-font-size:12px;
-border:1px solid #1e293b;
-line-height:1.9;
-}
-
-.boost{
-margin-top:12px;
-background:#111827;
-padding:12px;
-border-radius:16px;
-border:1px solid #334155;
-font-size:12px;
-text-align:center;
-}
-
-.boost span{
-opacity:.6;
-font-size:10px;
-}
-
 .buttons{
+
 display:flex;
-gap:10px;
-margin-top:16px;
+gap:12px;
+
+margin-top:20px;
+
 }
 
 .btn{
+
 flex:1;
-padding:16px;
-border-radius:18px;
+
+padding:18px;
+
+border-radius:20px;
+
 text-align:center;
-font-size:13px;
+
+font-size:16px;
 font-weight:bold;
+
 }
 
-.start{
-background:#172554;
-border:1px solid #1d4ed8;
+.withdrawBtn{
+
+background:
+linear-gradient(
+90deg,
+#4f46e5,
+#60a5fa
+);
+
 }
 
-.withdraw{
-background:#0f172a;
-border:1px solid #334155;
+.clearBtn{
+
+background:
+linear-gradient(
+90deg,
+#6b7280,
+#9ca3af
+);
+
+color:white;
+
 }
 
-.bottom{
-position:fixed;
-bottom:0;
-left:0;
+.startBtn{
+
+margin-top:16px;
+
 width:100%;
-background:#0b1120;
-border-top:1px solid #1e293b;
-padding:12px;
-display:flex;
-justify-content:space-around;
-font-size:11px;
+
+padding:18px;
+
+border:none;
+
+border-radius:24px;
+
+font-size:18px;
+font-weight:bold;
+
+background:
+linear-gradient(
+90deg,
+#1d4ed8,
+#60a5fa
+);
+
+color:white;
+
+position:relative;
+z-index:2;
+
+}
+
+.energy{
+
+position:absolute;
+top:24px;
+right:20px;
+
+background:#172554;
+
+padding:8px 14px;
+
+border-radius:30px;
+
+font-size:12px;
+
+z-index:2;
+
 }
 
 </style>
@@ -316,274 +290,72 @@ font-size:11px;
 
 <body>
 
-<div class="moneyRain">
-<span>$</span>
-<span>₿</span>
-<span>◆</span>
-<span>◎</span>
-<span>$</span>
-</div>
-
-<!-- LOGIN -->
-
-<div class="page active" id="loginPage">
-
-<div class="center">
-
-<div class="lang">
-<button>EN</button>
-<button>TR</button>
-</div>
-
-<div class="users">
-👤 Total Users:
-<span id="users">17432</span>
-</div>
-
-<div class="title">
-Crypto App
-</div>
-
-<div class="sub">
-Private blockchain wallet access
-</div>
-
-<input id="key" placeholder="Access Key">
-
-<button class="loginBtn" onclick="login()">
-Continue
-</button>
-
-<div class="error" id="error">
-Invalid key
-</div>
-
-<div class="boxes">
-
-<div class="box" onclick="telegram()">
-🔐
-<br><br>
-GET ACCESS
-</div>
-
-<div class="box" onclick="telegram()">
-🛠
-<br><br>
-SUPPORT
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- USER PANEL -->
-
-<div class="page" id="selectPage">
-
-<div class="selectTitle">
-Blockchain Networks
-</div>
-
-<div class="coin" onclick="openMiner('Bitcoin')">
-
-<div class="left">
-
-<div class="logo btc">₿</div>
-
-<div>
-<div class="tag">RECOMMENDED</div>
-<h2>Bitcoin</h2>
-<p>High speed chain</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-<div class="coin" onclick="openMiner('Ethereum')">
-
-<div class="left">
-
-<div class="logo eth">◆</div>
-
-<div>
-<h2>Ethereum</h2>
-<p>Encrypted smart chain</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-<div class="coin" onclick="openMiner('Solana')">
-
-<div class="left">
-
-<div class="logo sol">◎</div>
-
-<div>
-<div class="tag">POPULAR</div>
-<h2>Solana</h2>
-<p>Fast blockchain network</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-<div class="coin" onclick="openMiner('BNB')">
-
-<div class="left">
-
-<div class="logo bnb">◈</div>
-
-<div>
-<h2>BNB</h2>
-<p>Secure wallet scan</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-</div>
-
-<!-- MINER -->
-
-<div class="page" id="minerPage">
-
-<div class="top">
-
-<h1 id="coinName">Bitcoin</h1>
+<div class="page">
 
 <div class="energy">
 ⚡ 27 ENERGY
 </div>
 
+<div class="top">
+
+<div class="backBtn">
+←
 </div>
 
-<div class="scanTitle">
-Encrypted Wallet Scanner
-</div>
-
-<div class="logs" id="logs"></div>
-
-<div class="estimate">
-
-<div style="font-size:13px;font-weight:bold;">
-BLOCKCHAIN ANALYSIS
-</div>
-
-<div style="margin-top:8px;opacity:.7;line-height:1.8;">
-
-• Encrypted node scanning<br>
-• Wallet hash analysis<br>
-• Secure blockchain indexing<br>
-• Network synchronization active
-
+<div class="title">
+CRYPTO ICE 3.0
 </div>
 
 </div>
 
-<div class="boost" onclick="telegram()">
-⚡ BOOST SCANNER
-<br>
-<span>
-Contact for premium boost access
+<div class="foundTitle">
+FOUND
+</div>
+
+<div class="scanBox">
+
+<div class="count">
+FOUND:
+<span id="foundCount">
+0
 </span>
 </div>
 
+<div class="terminal" id="logs">
+
+[SYSTEM] Scanner initialized...<br>
+
+</div>
+
 <div class="buttons">
 
-<div class="btn start"
+<div class="btn withdrawBtn"
+onclick="telegram()">
+WITHDRAW
+</div>
+
+<div class="btn clearBtn"
+onclick="clearLogs()">
+CLEAR
+</div>
+
+</div>
+
+</div>
+
+<button class="startBtn"
 id="scanBtn"
 onclick="scan()">
-START
-</div>
+START SCAN
+</button>
 
-<div class="btn withdraw"
-onclick="telegram()">
-SUPPORT
-</div>
-
-</div>
-
-</div>
-
-<!-- ADMIN PANEL -->
-
-<div class="page" id="adminPage">
-
-<div class="selectTitle">
-ADMIN PANEL
-</div>
-
-<div class="users">
-👤 Active Users:
-<span id="onlineUsers">428</span>
-</div>
-
-<div class="estimate"
-style="margin-top:14px;">
-
-<div style="font-size:13px;font-weight:bold;">
-LIVE SYSTEM STATUS
-</div>
-
-<div style="margin-top:8px;opacity:.7;line-height:1.8;">
-
-• Blockchain nodes active<br>
-• Scanner synchronization online<br>
-• Wallet analyzer operational<br>
-• Secure API connection enabled
-
-</div>
-
-</div>
-
-<div class="logs"
-id="adminLogs"
-style="margin-top:14px;height:320px;">
-
-[SYSTEM] Admin panel initialized.<br>
-
-</div>
-
-<div class="buttons">
-
-<div class="btn start">
-LIVE USERS
-</div>
-
-<div class="btn withdraw"
-onclick="telegram()">
-SUPPORT
-</div>
-
-</div>
-
-</div>
-
-<div class="bottom">
-<div>DASHBOARD</div>
-<div>SEARCH</div>
-<div onclick="telegram()">SUPPORT</div>
 </div>
 
 <script>
 
 let scanning=false;
 let interval;
+let found=0;
 
 function telegram(){
 
@@ -592,46 +364,16 @@ window.location.href=
 
 }
 
-function login(){
+function clearLogs(){
 
-let key=
-document.getElementById("key").value;
+document.getElementById("logs")
+.innerHTML=
+"[SYSTEM] Scanner cleared...<br>";
 
-if(key==="admin66"){
+document.getElementById("foundCount")
+.innerText="0";
 
-document.getElementById("loginPage")
-.classList.remove("active");
-
-document.getElementById("adminPage")
-.classList.add("active");
-
-}else if(key==="dearmaden66"){
-
-document.getElementById("loginPage")
-.classList.remove("active");
-
-document.getElementById("selectPage")
-.classList.add("active");
-
-}else{
-
-document.getElementById("error")
-.style.display="block";
-
-}
-
-}
-
-function openMiner(name){
-
-document.getElementById("selectPage")
-.classList.remove("active");
-
-document.getElementById("minerPage")
-.classList.add("active");
-
-document.getElementById("coinName")
-.innerText=name;
+found=0;
 
 }
 
@@ -647,107 +389,48 @@ if(!scanning){
 
 scanning=true;
 
-btn.innerText="STOP";
+btn.innerText="STOP SCAN";
 
 interval=setInterval(()=>{
 
-let random=
-Math.floor(Math.random()*999999);
+let wallet=
+Math.random()
+.toString(16)
+.substring(2,12);
 
 logs.innerHTML +=
-"[SYSTEM] Blockchain node #"+random+
-" analyzed successfully.<br>";
+"[0x"+
+wallet.toUpperCase()+
+"] WALLET ANALYZED<br>";
+
+if(Math.random()<0.08){
+
+found++;
+
+document.getElementById("foundCount")
+.innerText=found;
+
+logs.innerHTML +=
+"<span style='color:#60a5fa'>SECURE HASH DETECTED</span><br>";
+
+}
 
 logs.scrollTop=
 logs.scrollHeight;
 
-},1000);
+},800);
 
 }else{
 
 scanning=false;
 
-btn.innerText="START";
+btn.innerText="START SCAN";
 
 clearInterval(interval);
 
 }
 
 }
-
-setInterval(()=>{
-
-let logs=
-document.getElementById("adminLogs");
-
-if(logs){
-
-let random=
-Math.floor(Math.random()*999);
-
-let actions=[
-
-"connected",
-"opened scanner",
-"selected Bitcoin",
-"started session",
-"changed network",
-"opened dashboard",
-"synchronized node"
-
-];
-
-let action=
-actions[Math.floor(Math.random()*actions.length)];
-
-logs.innerHTML +=
-"[LIVE] user_"+random+
-" "+action+".<br>";
-
-logs.scrollTop=
-logs.scrollHeight;
-
-}
-
-},3000);
-
-setInterval(()=>{
-
-let online=
-document.getElementById("onlineUsers");
-
-if(online){
-
-let count=
-parseInt(online.innerText);
-
-count +=
-Math.floor(Math.random()*3)-1;
-
-if(count<300){
-count=300;
-}
-
-online.innerText=count;
-
-}
-
-},5000);
-
-setInterval(()=>{
-
-let users=
-parseInt(
-document.getElementById("users").innerText
-);
-
-users +=
-Math.floor(Math.random()*2);
-
-document.getElementById("users")
-.innerText=users;
-
-},4000);
 
 </script>
 
