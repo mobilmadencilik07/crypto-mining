@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Crypto ICE V5</title>
+<title>ICE Scanner X</title>
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
-background:#030712;
+background:#020617;
 color:white;
 overflow:hidden;
 font-weight:300;
@@ -36,12 +36,13 @@ display:block;
 
 .bg{
 position:absolute;
-right:0;
-top:0;
+right:-20px;
+top:-30px;
 font-size:180px;
-font-weight:600;
+font-weight:700;
 opacity:0.03;
 color:#60a5fa;
+pointer-events:none;
 }
 
 .center{
@@ -50,15 +51,16 @@ text-align:center;
 }
 
 .title{
-font-size:46px;
-font-weight:600;
+font-size:38px;
+font-weight:500;
+letter-spacing:-1px;
 }
 
 .sub{
-opacity:0.6;
+opacity:0.55;
 margin-top:8px;
-margin-bottom:25px;
-font-size:17px;
+margin-bottom:24px;
+font-size:15px;
 }
 
 input{
@@ -67,11 +69,10 @@ padding:18px;
 border:none;
 border-radius:22px;
 background:#0f172a;
-color:white;
-font-size:18px;
-outline:none;
-margin-top:20px;
 border:1px solid #1e293b;
+color:white;
+font-size:16px;
+outline:none;
 }
 
 .loginBtn{
@@ -79,50 +80,61 @@ width:100%;
 padding:18px;
 border:none;
 border-radius:22px;
-margin-top:20px;
+margin-top:18px;
 background:white;
-font-size:20px;
+color:black;
+font-size:17px;
 font-weight:500;
 }
 
 .error{
 margin-top:15px;
 color:#ef4444;
-font-size:15px;
+font-size:14px;
 display:none;
 }
 
 .boxes{
 display:flex;
-gap:15px;
-margin-top:60px;
+gap:14px;
+margin-top:55px;
 }
 
 .box{
 flex:1;
-background:#0f172a;
+background:rgba(15,23,42,0.9);
 border:1px solid #1e293b;
-padding:30px 10px;
-border-radius:28px;
-font-size:20px;
+padding:28px 10px;
+border-radius:26px;
+font-size:15px;
 font-weight:500;
+backdrop-filter:blur(12px);
+box-shadow:0 0 25px rgba(0,0,0,0.3);
+}
+
+.icon{
+font-size:28px;
+margin-bottom:18px;
 }
 
 .selectTitle{
-font-size:40px;
-font-weight:600;
-margin-bottom:25px;
+font-size:30px;
+font-weight:500;
+margin-bottom:24px;
+letter-spacing:-0.5px;
 }
 
 .coin{
-background:#0f172a;
+background:rgba(15,23,42,0.92);
 border:1px solid #1e293b;
 padding:18px;
 border-radius:24px;
-margin-bottom:15px;
+margin-bottom:14px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+backdrop-filter:blur(10px);
+box-shadow:0 0 25px rgba(0,0,0,0.25);
 }
 
 .left{
@@ -132,46 +144,55 @@ gap:15px;
 }
 
 .logo{
-width:52px;
-height:52px;
+width:50px;
+height:50px;
 border-radius:50%;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:24px;
+font-size:22px;
 font-weight:600;
 }
 
 .btc{background:#f7931a;}
 .eth{background:#627eea;}
 .sol{background:#14f195;color:black;}
-.xrp{background:#111827;}
-.bnb{background:#f3ba2f;color:black;}
+
+.coin h2{
+font-size:17px;
+font-weight:500;
+}
 
 .arrow{
-opacity:0.6;
-font-size:24px;
+opacity:0.45;
+font-size:22px;
 }
 
 .top{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:20px;
+margin-bottom:18px;
+}
+
+.top h1{
+font-size:28px;
+font-weight:500;
 }
 
 .energy{
 background:white;
 color:black;
-padding:7px 15px;
+padding:7px 14px;
 border-radius:30px;
+font-size:14px;
 font-weight:500;
 }
 
 .scanTitle{
-font-size:42px;
-font-weight:600;
-margin-bottom:25px;
+font-size:34px;
+font-weight:500;
+margin-bottom:20px;
 }
 
 .logs{
@@ -179,17 +200,21 @@ height:260px;
 overflow:auto;
 background:#0f172a;
 border:1px solid #1e293b;
-padding:18px;
-border-radius:22px;
-font-size:14px;
-line-height:1.8;
-opacity:0.85;
+padding:16px;
+border-radius:24px;
+font-size:12px;
+line-height:1.9;
+opacity:0.82;
+}
+
+.logs::-webkit-scrollbar{
+display:none;
 }
 
 .found{
 margin-top:20px;
-font-size:42px;
-font-weight:600;
+font-size:34px;
+font-weight:500;
 }
 
 .green{
@@ -198,22 +223,22 @@ color:#22c55e;
 
 .buttons{
 display:flex;
-gap:15px;
-margin-top:25px;
+gap:14px;
+margin-top:22px;
 }
 
 .btn{
 flex:1;
-padding:22px;
+padding:20px;
 border-radius:24px;
 text-align:center;
-font-size:22px;
+font-size:16px;
 font-weight:500;
 }
 
 .start{
-background:#2a0b0b;
-border:1px solid red;
+background:#190909;
+border:1px solid #7f1d1d;
 }
 
 .withdraw{
@@ -226,13 +251,13 @@ position:fixed;
 bottom:0;
 left:0;
 width:100%;
-background:#0f172a;
+background:#0b1120;
 border-top:1px solid #1e293b;
-padding:18px;
+padding:16px;
 display:flex;
 justify-content:space-around;
-font-size:15px;
-opacity:0.8;
+font-size:13px;
+opacity:0.7;
 }
 
 .popup{
@@ -242,16 +267,24 @@ left:50%;
 transform:translate(-50%,-50%);
 background:#0f172a;
 border:1px solid #334155;
-padding:30px;
+padding:28px;
 border-radius:30px;
 width:85%;
 display:none;
-z-index:99;
+z-index:999;
+box-shadow:0 0 50px rgba(0,0,0,0.45);
 }
 
 .popup h2{
+font-size:24px;
 margin-bottom:15px;
-font-weight:600;
+font-weight:500;
+}
+
+.popup p{
+opacity:0.7;
+line-height:1.7;
+font-size:14px;
 }
 
 .popup button{
@@ -259,9 +292,10 @@ margin-top:20px;
 width:100%;
 padding:16px;
 border:none;
-border-radius:20px;
+border-radius:18px;
 background:white;
-font-size:18px;
+font-size:15px;
+font-weight:500;
 }
 
 </style>
@@ -271,37 +305,37 @@ font-size:18px;
 
 <div class="page active" id="loginPage">
 
-<div class="bg">V5</div>
+<div class="bg">ICE</div>
 
 <div class="center">
 
 <div class="title">
-Welcome!
+ICE Scanner
 </div>
 
 <div class="sub">
-Log in to your account
+Private blockchain wallet scanner access
 </div>
 
-<input id="keyInput" placeholder="Your Key">
+<input id="keyInput" placeholder="Access Key">
 
 <button class="loginBtn" onclick="login()">
-Log In
+Continue
 </button>
 
 <div class="error" id="error">
-Wrong access key
+Invalid access key
 </div>
 
 <div class="boxes">
 
 <div class="box" onclick="openTelegram()">
-ICE
-<br><br>
+<div class="icon">🔐</div>
 GET ACCESS
 </div>
 
 <div class="box" onclick="openTelegram()">
+<div class="icon">🛠</div>
 SUPPORT
 </div>
 
@@ -358,19 +392,17 @@ Wallet Scanner
 
 <div class="found">
 Found:
-<span class="green" id="money">
-$0
-</span>
+<span class="green" id="money">$0</span>
 </div>
 
 <div class="buttons">
 
 <div class="btn start" onclick="startScan()">
-START
+START SCAN
 </div>
 
 <div class="btn withdraw" onclick="withdrawPopup()">
-Withdraw →
+WITHDRAW
 </div>
 
 </div>
@@ -379,15 +411,15 @@ Withdraw →
 
 <div class="popup" id="popup">
 
-<h2>Withdraw System</h2>
+<h2>Withdraw Locked</h2>
 
 <p>
-Minimum withdraw amount is $500.
-Continue scanning wallets to unlock withdraw.
+Minimum withdraw amount is $500.  
+Continue scanning encrypted blockchain wallets to unlock withdraw access.
 </p>
 
 <button onclick="closePopup()">
-OK
+Close
 </button>
 
 </div>
@@ -438,25 +470,25 @@ function startScan(){
 
 let logs=document.getElementById("logs");
 
-let scan=setInterval(()=>{
+setInterval(()=>{
 
-let random=Math.floor(Math.random()*99999);
+let random=Math.floor(Math.random()*999999);
 
 logs.innerHTML +=
-"Wallet #"+random+" scanned... no balance found.<br>";
+"[SYSTEM] Wallet #"+random+" scanned • encrypted address • no active balance found.<br>";
 
 logs.scrollTop=logs.scrollHeight;
 
-if(Math.random()<0.08){
+if(Math.random()<0.015){
 
-found += Math.floor(Math.random()*8)+1;
+found += Math.floor(Math.random()*2)+1;
 
 document.getElementById("money").innerText=
 "$"+found;
 
 }
 
-},300);
+},700);
 
 }
 
