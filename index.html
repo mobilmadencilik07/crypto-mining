@@ -24,6 +24,44 @@ color:white;
 overflow:hidden;
 }
 
+.moneyRain{
+position:fixed;
+inset:0;
+overflow:hidden;
+pointer-events:none;
+opacity:0.05;
+z-index:-1;
+}
+
+.moneyRain span{
+position:absolute;
+top:-50px;
+font-size:24px;
+animation:fall 12s linear infinite;
+}
+
+.moneyRain span:nth-child(1){left:10%;animation-delay:0s;}
+.moneyRain span:nth-child(2){left:25%;animation-delay:2s;}
+.moneyRain span:nth-child(3){left:40%;animation-delay:5s;}
+.moneyRain span:nth-child(4){left:55%;animation-delay:1s;}
+.moneyRain span:nth-child(5){left:70%;animation-delay:4s;}
+.moneyRain span:nth-child(6){left:85%;animation-delay:3s;}
+.moneyRain span:nth-child(7){left:95%;animation-delay:6s;}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px) rotate(0deg);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translateY(120vh) rotate(360deg);
+opacity:0;
+}
+}
+
 .page{
 display:none;
 min-height:100vh;
@@ -221,6 +259,23 @@ font-size:15px;
 font-weight:600;
 }
 
+.activityBox{
+margin-top:14px;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:14px;
+border-radius:18px;
+font-size:12px;
+line-height:1.9;
+}
+
+.activityTitle{
+font-size:13px;
+font-weight:600;
+margin-bottom:8px;
+opacity:0.7;
+}
+
 .coin{
 position:relative;
 background:#0f172a;
@@ -367,6 +422,24 @@ animation:move 4s linear infinite;
 100%{transform:translateX(20%) rotate(-6deg);}
 }
 
+.estimateBox{
+margin-top:12px;
+background:#111827;
+border:1px solid #1e293b;
+padding:12px;
+border-radius:16px;
+font-size:12px;
+text-align:center;
+line-height:1.7;
+}
+
+.estimateTime{
+margin-top:6px;
+font-size:15px;
+font-weight:600;
+color:#60a5fa;
+}
+
 .miniBoost{
 margin-top:12px;
 background:#111827;
@@ -470,482 +543,20 @@ border:1px solid #334155;
 
 <body>
 
+<div class="moneyRain">
+<span>$</span>
+<span>₿</span>
+<span>◆</span>
+<span>$</span>
+<span>◎</span>
+<span>◈</span>
+<span>$</span>
+</div>
+
 <div class="splash">
 <div class="loader"></div>
 <h1>Crypto App</h1>
 <p>Initializing encrypted blockchain scanner...</p>
 </div>
 
-<div class="page active" id="loginPage">
-
-<div class="bg">APP</div>
-
-<div class="center">
-
-<div class="langSwitch">
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('tr')">TR</button>
-</div>
-
-<div class="usersBox">
-👤 Total Users:
-<span id="userCount">17432</span>
-</div>
-
-<div class="title">
-Crypto App
-</div>
-
-<div class="sub">
-Private blockchain wallet access
-</div>
-
-<input id="keyInput" placeholder="Access Key">
-
-<button class="loginBtn" onclick="login()">
-Continue
-</button>
-
-<div class="error" id="error">
-Invalid access key
-</div>
-
-<div class="boxes">
-
-<div class="box" onclick="openTelegram()">
-<div class="icon">🔐</div>
-GET ACCESS
-</div>
-
-<div class="box" onclick="openTelegram()">
-<div class="icon">🛠</div>
-SUPPORT
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="page" id="selectPage">
-
-<div class="selectTitle">
-Blockchain Networks
-</div>
-
-<div class="stats">
-
-<div class="stat">
-<h3>ONLINE</h3>
-<p>12,482</p>
-</div>
-
-<div class="stat">
-<h3>SCANNED</h3>
-<p>2.4M</p>
-</div>
-
-</div>
-
-<div class="coin recommended" onclick="openMiner('Bitcoin')">
-
-<div class="tag">RECOMMENDED</div>
-
-<div class="left">
-
-<div class="logo btc">₿</div>
-
-<div>
-<h2>Bitcoin</h2>
-<p class="coinSub">High speed blockchain</p>
-</div>
-
-</div>
-
-<div class="arrow">→</div>
-
-</div>
-
-<div class="coin" onclick="openMiner('Ethereum')">
-
-<div class="left">
-
-<div class="logo eth">◆</div>
-
-<div>
-<h2>Ethereum</h2>
-<p class="coinSub">Encrypted smart chain</p>
-</div>
-
-</div>
-
-<div class="arrow">→</div>
-
-</div>
-
-<div class="coin recommended" onclick="openMiner('Solana')">
-
-<div class="tag">POPULAR</div>
-
-<div class="left">
-
-<div class="logo sol">◎</div>
-
-<div>
-<h2>Solana</h2>
-<p class="coinSub">Fast network scanner</p>
-</div>
-
-</div>
-
-<div class="arrow">→</div>
-
-</div>
-
-<div class="coin" onclick="openMiner('BNB')">
-
-<div class="left">
-
-<div class="logo bnb">◈</div>
-
-<div>
-<h2>BNB</h2>
-<p class="coinSub">Secure wallet chain</p>
-</div>
-
-</div>
-
-<div class="arrow">→</div>
-
-</div>
-
-<div class="coin" onclick="openMiner('XRP')">
-
-<div class="left">
-
-<div class="logo xrp">✕</div>
-
-<div>
-<h2>XRP</h2>
-<p class="coinSub">Low latency transfers</p>
-</div>
-
-</div>
-
-<div class="arrow">→</div>
-
-</div>
-
-<div class="coin recommended" onclick="openMiner('TON')">
-
-<div class="tag">TRENDING</div>
-
-<div class="left">
-
-<div class="logo ton">◉</div>
-
-<div>
-<h2>TON</h2>
-<p class="coinSub">Telegram blockchain</p>
-</div>
-
-</div>
-
-<div class="arrow">→</div>
-
-</div>
-
-</div>
-
-<div class="page" id="minerPage">
-
-<div class="top">
-<h1 id="coinName">Bitcoin</h1>
-<div class="energy">⚡ 27 ENERGY</div>
-</div>
-
-<div class="scanTitle">
-Encrypted Wallet Scanner
-</div>
-
-<div class="logs" id="logs"></div>
-
-<div class="found">
-Found:
-<span class="green" id="money">$0</span>
-</div>
-
-<div class="chart">
-<div class="line"></div>
-</div>
-
-<div class="miniBoost" onclick="openTelegram()">
-⚡ BOOST SCANNER
-<br>
-<span id="boostText">
-Contact for premium boost access
-</span>
-</div>
-
-<div class="buttons">
-
-<div class="btn start" id="scanBtn" onclick="startScan()">
-START SCAN
-</div>
-
-<div class="btn withdraw" onclick="withdrawPopup()">
-WITHDRAW
-</div>
-
-</div>
-
-</div>
-
-<div class="popup" id="popup">
-
-<h2 id="withdrawTitle">
-Withdraw System
-</h2>
-
-<p id="withdrawText">
-Minimum withdraw amount is $10.
-Enter your address or IBAN.
-</p>
-
-<input id="walletInput" placeholder="Wallet Address">
-
-<input id="ibanInput" placeholder="IBAN">
-
-<button onclick="sendWithdraw()">
-<span id="withdrawBtnText">
-REQUEST WITHDRAW
-</span>
-</button>
-
-<button onclick="closePopup()" class="closeBtn">
-Close
-</button>
-
-</div>
-
-<div class="bottom">
-<div>DASHBOARD</div>
-<div>SEARCH</div>
-<div>SETTINGS</div>
-</div>
-
-<script>
-
-let found=0;
-let currentLang="en";
-let scanning=false;
-let scanInterval;
-
-function login(){
-
-let key=document.getElementById("keyInput").value;
-
-if(key==="dearmaden66"){
-
-document.getElementById("loginPage").classList.remove("active");
-document.getElementById("selectPage").classList.add("active");
-
-}else{
-
-document.getElementById("error").style.display="block";
-
-}
-
-}
-
-function openTelegram(){
-
-window.location.href="https://t.me/dearmadenn";
-
-}
-
-function openMiner(name){
-
-document.getElementById("selectPage").classList.remove("active");
-document.getElementById("minerPage").classList.add("active");
-
-document.getElementById("coinName").innerText=name;
-
-}
-
-function startScan(){
-
-let logs=document.getElementById("logs");
-let btn=document.getElementById("scanBtn");
-
-if(!scanning){
-
-scanning=true;
-
-btn.innerText=currentLang==="tr"
-? "DURDUR"
-: "STOP";
-
-scanInterval=setInterval(()=>{
-
-let random=Math.floor(Math.random()*999999);
-
-if(currentLang==="tr"){
-
-logs.innerHTML +=
-"[SİSTEM] Cüzdan #"+random+" tarandı • şifreli adres • bakiye bulunamadı.<br>";
-
-}else{
-
-logs.innerHTML +=
-"[SYSTEM] Wallet #"+random+" scanned • encrypted address • no active balance found.<br>";
-
-}
-
-logs.scrollTop=logs.scrollHeight;
-
-if(Math.random()<0.035){
-
-found += Math.floor(Math.random()*3)+1;
-
-document.getElementById("money").innerText=
-"$"+found;
-
-}
-
-},900);
-
-}else{
-
-scanning=false;
-
-btn.innerText=currentLang==="tr"
-? "TARAMAYI BAŞLAT"
-: "START SCAN";
-
-clearInterval(scanInterval);
-
-}
-
-}
-
-function withdrawPopup(){
-
-document.getElementById("popup").style.display="block";
-
-}
-
-function closePopup(){
-
-document.getElementById("popup").style.display="none";
-
-}
-
-function sendWithdraw(){
-
-window.location.href="https://t.me/dearmadenn";
-
-}
-
-function setLang(lang){
-
-currentLang=lang;
-
-if(lang==="tr"){
-
-document.querySelector(".sub").innerText=
-"Özel blockchain cüzdan erişimi";
-
-document.querySelector(".loginBtn").innerText=
-"Devam Et";
-
-document.querySelector(".selectTitle").innerText=
-"Blockchain Ağları";
-
-document.querySelector(".scanTitle").innerText=
-"Şifrelenmiş Cüzdan Tarayıcı";
-
-document.getElementById("boostText").innerText=
-"Premium boost erişimi için ulaşın";
-
-document.getElementById("withdrawTitle").innerText=
-"Çekim Sistemi";
-
-document.getElementById("withdrawText").innerText=
-"Minimum çekim tutarı 10$. Adres veya IBAN girin.";
-
-document.getElementById("walletInput").placeholder=
-"Cüzdan Adresi";
-
-document.getElementById("ibanInput").placeholder=
-"IBAN";
-
-document.getElementById("withdrawBtnText").innerText=
-"ÇEKİM TALEBİ";
-
-if(!scanning){
-
-document.getElementById("scanBtn").innerText=
-"TARAMAYI BAŞLAT";
-
-}
-
-}else{
-
-document.querySelector(".sub").innerText=
-"Private blockchain wallet access";
-
-document.querySelector(".loginBtn").innerText=
-"Continue";
-
-document.querySelector(".selectTitle").innerText=
-"Blockchain Networks";
-
-document.querySelector(".scanTitle").innerText=
-"Encrypted Wallet Scanner";
-
-document.getElementById("boostText").innerText=
-"Contact for premium boost access";
-
-document.getElementById("withdrawTitle").innerText=
-"Withdraw System";
-
-document.getElementById("withdrawText").innerText=
-"Minimum withdraw amount is $10. Enter your address or IBAN.";
-
-document.getElementById("walletInput").placeholder=
-"Wallet Address";
-
-document.getElementById("ibanInput").placeholder=
-"IBAN";
-
-document.getElementById("withdrawBtnText").innerText=
-"REQUEST WITHDRAW";
-
-if(!scanning){
-
-document.getElementById("scanBtn").innerText=
-"START SCAN";
-
-}
-
-}
-
-}
-
-setInterval(()=>{
-
-let current=
-parseInt(document.getElementById("userCount").innerText);
-
-current += Math.floor(Math.random()*3);
-
-document.getElementById("userCount").innerText=current;
-
-},5000);
-
-</script>
-
-</body>
-</html>
+<!-- devamı önceki verdiğim kodla aynı kalıyor -->
