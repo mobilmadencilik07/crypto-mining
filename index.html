@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Crypto App Admin</title>
+<title>Crypto App</title>
 
 <style>
 
@@ -15,74 +15,90 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Inter',sans-serif;
+-webkit-tap-highlight-color:transparent;
 }
 
 body{
 background:#020617;
 color:white;
-padding:18px;
+overflow:hidden;
 }
 
-.top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
+.page{
+display:none;
+min-height:100vh;
+padding:18px;
+overflow:auto;
+}
+
+.active{
+display:block;
 }
 
 .title{
-font-size:28px;
+font-size:30px;
 font-weight:700;
 }
 
-.badge{
-background:#172554;
-border:1px solid #2563eb;
-padding:8px 14px;
-border-radius:30px;
-font-size:12px;
-}
-
-.stats{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-bottom:18px;
-}
-
-.card{
-background:#0f172a;
-border:1px solid #1e293b;
-padding:18px;
-border-radius:20px;
-}
-
-.card h3{
+.sub{
+margin-top:8px;
 font-size:13px;
 opacity:.6;
-font-weight:500;
 }
 
-.card p{
-margin-top:10px;
-font-size:24px;
-font-weight:700;
+.center{
+padding-top:60px;
+text-align:center;
 }
 
-.section{
-margin-top:20px;
+input{
+width:100%;
+padding:15px;
+margin-top:12px;
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:18px;
+color:white;
+outline:none;
+}
+
+.btnMain{
+width:100%;
+padding:15px;
+margin-top:14px;
+border:none;
+border-radius:18px;
+background:#2563eb;
+color:white;
+font-weight:600;
+}
+
+.boxes{
+display:flex;
+gap:10px;
+margin-top:24px;
+}
+
+.box{
+flex:1;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:20px 10px;
+border-radius:18px;
+font-size:12px;
+text-align:center;
 }
 
 .sectionTitle{
-font-size:18px;
+font-size:22px;
 font-weight:700;
-margin-bottom:14px;
+margin-bottom:18px;
 }
 
-.user{
+.coin{
 background:#0f172a;
 border:1px solid #1e293b;
-padding:16px;
+padding:15px;
 border-radius:18px;
 margin-bottom:12px;
 display:flex;
@@ -90,47 +106,169 @@ justify-content:space-between;
 align-items:center;
 }
 
-.left h2{
+.left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo{
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:700;
+}
+
+.btc{background:#f7931a;}
+.eth{background:#627eea;}
+.sol{background:#14f195;color:black;}
+.ton{background:#0098ea;}
+
+.tag{
+background:#2563eb;
+padding:4px 8px;
+border-radius:30px;
+font-size:9px;
+display:inline-block;
+margin-bottom:4px;
+}
+
+.coin h2{
 font-size:15px;
 }
 
-.left p{
+.coin p{
+font-size:11px;
+opacity:.5;
+margin-top:3px;
+}
+
+.logs{
+height:220px;
+overflow:auto;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:14px;
+border-radius:18px;
+font-size:11px;
+line-height:1.8;
+opacity:.85;
+margin-top:14px;
+}
+
+.logs::-webkit-scrollbar{
+display:none;
+}
+
+.progressBox{
+margin-top:14px;
+background:#111827;
+padding:12px;
+border-radius:16px;
+border:1px solid #1e293b;
+}
+
+.progress{
+height:10px;
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.progressBar{
+height:100%;
+width:0%;
+background:#2563eb;
+transition:.3s;
+}
+
+.status{
+margin-top:10px;
+font-size:12px;
+color:#60a5fa;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+margin-top:16px;
+}
+
+.btn{
+flex:1;
+padding:15px;
+border-radius:18px;
+text-align:center;
+font-size:13px;
+font-weight:600;
+}
+
+.start{
+background:#172554;
+border:1px solid #2563eb;
+}
+
+.support{
+background:#0f172a;
+border:1px solid #334155;
+}
+
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:18px;
+}
+
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+padding:18px;
+border-radius:18px;
+}
+
+.card h3{
+font-size:12px;
+opacity:.6;
+}
+
+.card p{
+margin-top:8px;
+font-size:22px;
+font-weight:700;
+}
+
+.user{
+background:#0f172a;
+border:1px solid #1e293b;
+padding:16px;
+border-radius:18px;
+margin-top:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.user h2{
+font-size:14px;
+}
+
+.user p{
 font-size:11px;
 opacity:.6;
 margin-top:4px;
 }
 
-.status{
-padding:6px 10px;
-border-radius:30px;
-font-size:11px;
-font-weight:600;
-}
-
 .online{
 background:#14532d;
 color:#4ade80;
-}
-
-.offline{
-background:#3f3f46;
-color:#d4d4d8;
-}
-
-.logBox{
-background:#0f172a;
-border:1px solid #1e293b;
-padding:16px;
-border-radius:18px;
-height:220px;
-overflow:auto;
-font-size:12px;
-line-height:1.9;
-opacity:.85;
-}
-
-.logBox::-webkit-scrollbar{
-display:none;
+padding:6px 10px;
+border-radius:30px;
+font-size:11px;
 }
 
 .bottom{
@@ -140,10 +278,10 @@ left:0;
 width:100%;
 background:#0b1120;
 border-top:1px solid #1e293b;
-padding:14px;
+padding:12px;
 display:flex;
 justify-content:space-around;
-font-size:12px;
+font-size:11px;
 }
 
 </style>
@@ -151,30 +289,180 @@ font-size:12px;
 
 <body>
 
-<div class="top">
+<!-- LOGIN -->
+
+<div class="page active" id="loginPage">
+
+<div class="center">
 
 <div class="title">
-Admin Panel
+Crypto App
 </div>
 
-<div class="badge">
-LIVE SYSTEM
+<div class="sub">
+User & Admin Panel Access
 </div>
 
+<input id="accessKey" placeholder="Access Key">
+
+<button class="btnMain" onclick="login()">
+Continue
+</button>
+
+<div class="boxes">
+
+<div class="box">
+🔐
+<br><br>
+USER PANEL
+</div>
+
+<div class="box">
+🛠
+<br><br>
+ADMIN PANEL
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- USER PANEL -->
+
+<div class="page" id="userPage">
+
+<div class="sectionTitle">
+Blockchain Networks
+</div>
+
+<div class="coin" onclick="openScanner('Bitcoin')">
+
+<div class="left">
+
+<div class="logo btc">₿</div>
+
+<div>
+<div class="tag">RECOMMENDED</div>
+<h2>Bitcoin</h2>
+<p>High speed blockchain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openScanner('Ethereum')">
+
+<div class="left">
+
+<div class="logo eth">◆</div>
+
+<div>
+<h2>Ethereum</h2>
+<p>Encrypted smart chain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openScanner('Solana')">
+
+<div class="left">
+
+<div class="logo sol">◎</div>
+
+<div>
+<div class="tag">POPULAR</div>
+<h2>Solana</h2>
+<p>Fast blockchain network</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openScanner('TON')">
+
+<div class="left">
+
+<div class="logo ton">◉</div>
+
+<div>
+<h2>TON</h2>
+<p>Telegram blockchain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="logs" id="userLogs">
+
+[SYSTEM] User panel initialized.<br>
+
+</div>
+
+<div class="progressBox">
+
+<div>
+Scanner Progress
+</div>
+
+<div class="progress">
+<div class="progressBar" id="progressBar"></div>
+</div>
+
+<div class="status" id="status">
+Waiting for scan...
+</div>
+
+</div>
+
+<div class="buttons">
+
+<div class="btn start" onclick="startScan()">
+START
+</div>
+
+<div class="btn support" onclick="telegram()">
+SUPPORT
+</div>
+
+</div>
+
+</div>
+
+<!-- ADMIN PANEL -->
+
+<div class="page" id="adminPage">
+
+<div class="sectionTitle">
+Admin Dashboard
 </div>
 
 <div class="stats">
 
 <div class="card">
 <h3>Total Users</h3>
-<p id="users">
+<p id="totalUsers">
 17432
 </p>
 </div>
 
 <div class="card">
 <h3>Online</h3>
-<p id="online">
+<p id="onlineUsers">
 428
 </p>
 </div>
@@ -189,28 +477,20 @@ LIVE SYSTEM
 <div class="card">
 <h3>Networks</h3>
 <p>
-6
+4
 </p>
 </div>
 
 </div>
 
-<div class="section">
-
-<div class="sectionTitle">
-Active Users
-</div>
-
-<div id="userList">
-
 <div class="user">
 
-<div class="left">
+<div>
 <h2>user_248</h2>
 <p>Bitcoin • 12 min active</p>
 </div>
 
-<div class="status online">
+<div class="online">
 ONLINE
 </div>
 
@@ -218,72 +498,134 @@ ONLINE
 
 <div class="user">
 
-<div class="left">
+<div>
 <h2>user_781</h2>
-<p>Ethereum • 4 min active</p>
+<p>Ethereum • 5 min active</p>
 </div>
 
-<div class="status online">
+<div class="online">
 ONLINE
 </div>
 
 </div>
 
-<div class="user">
-
-<div class="left">
-<h2>user_155</h2>
-<p>TON • 23 min active</p>
-</div>
-
-<div class="status offline">
-OFFLINE
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<div class="sectionTitle">
-System Logs
-</div>
-
-<div class="logBox" id="logs">
+<div class="logs" id="adminLogs">
 
 [SYSTEM] Admin panel initialized.<br>
-[SYSTEM] Live session tracking enabled.<br>
 
 </div>
 
 </div>
 
 <div class="bottom">
-<div>DASHBOARD</div>
-<div>USERS</div>
-<div>LOGS</div>
-<div>SETTINGS</div>
+<div>HOME</div>
+<div>SEARCH</div>
+<div onclick="telegram()">SUPPORT</div>
 </div>
 
 <script>
 
+function telegram(){
+
+window.location.href=
+"https://t.me/dearmadenn";
+
+}
+
+function login(){
+
+let key=
+document.getElementById("accessKey").value;
+
+document.getElementById("loginPage")
+.classList.remove("active");
+
+if(key==="admin66"){
+
+document.getElementById("adminPage")
+.classList.add("active");
+
+}else{
+
+document.getElementById("userPage")
+.classList.add("active");
+
+}
+
+}
+
+function openScanner(name){
+
+document.getElementById("status")
+.innerText=
+"Connected to "+name+" network...";
+
+}
+
+let progress=0;
+
+function startScan(){
+
 let logs=
-document.getElementById("logs");
+document.getElementById("userLogs");
+
+let bar=
+document.getElementById("progressBar");
+
+let status=
+document.getElementById("status");
+
+progress=0;
+
+let scan=
+setInterval(()=>{
+
+progress += 2;
+
+bar.style.width=
+progress+"%";
+
+let random=
+Math.floor(Math.random()*999999);
+
+logs.innerHTML +=
+"[SCAN] Blockchain #"+random+
+" analyzed successfully.<br>";
+
+logs.scrollTop=
+logs.scrollHeight;
+
+status.innerText=
+"Analyzing blockchain data...";
+
+if(progress>=100){
+
+clearInterval(scan);
+
+status.innerText=
+"Analysis completed.";
+
+logs.innerHTML +=
+"<br>✅ Blockchain analysis completed.";
+
+}
+
+},250);
+
+}
 
 setInterval(()=>{
+
+let logs=
+document.getElementById("adminLogs");
 
 let random=
 Math.floor(Math.random()*999);
 
 let actions=[
 "connected",
-"selected Bitcoin",
-"opened scanner",
-"changed network",
 "started session",
+"selected network",
 "opened dashboard"
 ];
 
@@ -291,7 +633,8 @@ let action=
 actions[Math.floor(Math.random()*actions.length)];
 
 logs.innerHTML +=
-"[LIVE] user_"+random+" "+action+".<br>";
+"[LIVE] user_"+random+
+" "+action+".<br>";
 
 logs.scrollTop=
 logs.scrollHeight;
@@ -301,20 +644,26 @@ logs.scrollHeight;
 setInterval(()=>{
 
 let users=
-parseInt(document.getElementById("users").innerText);
+parseInt(
+document.getElementById("totalUsers").innerText
+);
 
-users += Math.floor(Math.random()*2);
+users +=
+Math.floor(Math.random()*2);
 
-document.getElementById("users").innerText=
-users;
+document.getElementById("totalUsers")
+.innerText=users;
 
 let online=
-parseInt(document.getElementById("online").innerText);
+parseInt(
+document.getElementById("onlineUsers").innerText
+);
 
-online += Math.floor(Math.random()*5)-2;
+online +=
+Math.floor(Math.random()*3)-1;
 
-document.getElementById("online").innerText=
-online;
+document.getElementById("onlineUsers")
+.innerText=online;
 
 },5000);
 
