@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crypto App Demo</title>
+
+<title>Crypto App Admin</title>
 
 <style>
 
@@ -14,160 +15,74 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Inter',sans-serif;
--webkit-tap-highlight-color:transparent;
 }
 
 body{
 background:#020617;
 color:white;
-overflow:hidden;
-}
-
-.moneyRain{
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden;
-opacity:.05;
-z-index:-1;
-}
-
-.moneyRain span{
-position:absolute;
-top:-60px;
-font-size:22px;
-animation:fall 12s linear infinite;
-}
-
-.moneyRain span:nth-child(1){left:10%;animation-delay:0s;}
-.moneyRain span:nth-child(2){left:25%;animation-delay:2s;}
-.moneyRain span:nth-child(3){left:45%;animation-delay:4s;}
-.moneyRain span:nth-child(4){left:65%;animation-delay:1s;}
-.moneyRain span:nth-child(5){left:85%;animation-delay:3s;}
-
-@keyframes fall{
-0%{
-transform:translateY(-100px) rotate(0deg);
-opacity:0;
-}
-10%{
-opacity:1;
-}
-100%{
-transform:translateY(120vh) rotate(360deg);
-opacity:0;
-}
-}
-
-.page{
-display:none;
-min-height:100vh;
 padding:18px;
 }
 
-.active{
-display:block;
-}
-
-.center{
-padding-top:50px;
-text-align:center;
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
 }
 
 .title{
-font-size:32px;
+font-size:28px;
 font-weight:700;
 }
 
-.sub{
-margin-top:8px;
-font-size:13px;
-opacity:.6;
-line-height:1.6;
-}
-
-.demo{
-margin-top:14px;
+.badge{
 background:#172554;
 border:1px solid #2563eb;
-padding:10px;
-border-radius:14px;
-font-size:12px;
-}
-
-.lang{
-display:flex;
-justify-content:center;
-gap:8px;
-margin-bottom:14px;
-}
-
-.lang button{
-background:#111827;
-border:1px solid #1e293b;
-color:white;
 padding:8px 14px;
-border-radius:12px;
+border-radius:30px;
 font-size:12px;
 }
 
-.users{
-margin-top:14px;
-background:#0f172a;
-padding:12px;
-border-radius:14px;
-border:1px solid #1e293b;
-font-size:13px;
-}
-
-input{
-width:100%;
-padding:15px;
-margin-top:12px;
-background:#0f172a;
-border:1px solid #1e293b;
-border-radius:18px;
-color:white;
-outline:none;
-}
-
-.loginBtn{
-width:100%;
-padding:15px;
-margin-top:14px;
-border:none;
-border-radius:18px;
-background:#2563eb;
-color:white;
-font-weight:600;
-}
-
-.boxes{
-display:flex;
-gap:10px;
-margin-top:24px;
-}
-
-.box{
-flex:1;
-background:#0f172a;
-border:1px solid #1e293b;
-padding:20px 10px;
-border-radius:18px;
-font-size:12px;
-text-align:center;
-}
-
-.selectTitle{
-font-size:24px;
-font-weight:700;
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
 margin-bottom:18px;
 }
 
-.coin{
+.card{
 background:#0f172a;
 border:1px solid #1e293b;
-padding:15px;
+padding:18px;
+border-radius:20px;
+}
+
+.card h3{
+font-size:13px;
+opacity:.6;
+font-weight:500;
+}
+
+.card p{
+margin-top:10px;
+font-size:24px;
+font-weight:700;
+}
+
+.section{
+margin-top:20px;
+}
+
+.sectionTitle{
+font-size:18px;
+font-weight:700;
+margin-bottom:14px;
+}
+
+.user{
+background:#0f172a;
+border:1px solid #1e293b;
+padding:16px;
 border-radius:18px;
 margin-bottom:12px;
 display:flex;
@@ -175,140 +90,47 @@ justify-content:space-between;
 align-items:center;
 }
 
-.left{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.logo{
-width:42px;
-height:42px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:700;
-}
-
-.btc{background:#f7931a;}
-.eth{background:#627eea;}
-.sol{background:#14f195;color:black;}
-.ton{background:#0098ea;}
-
-.coin h2{
+.left h2{
 font-size:15px;
 }
 
-.coin p{
+.left p{
 font-size:11px;
-opacity:.5;
-margin-top:3px;
-}
-
-.tag{
-background:#2563eb;
-padding:4px 8px;
-border-radius:30px;
-font-size:9px;
-display:inline-block;
-margin-bottom:4px;
-}
-
-.top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:14px;
-}
-
-.energy{
-background:#111827;
-padding:7px 12px;
-border-radius:30px;
-font-size:11px;
-border:1px solid #1e293b;
-}
-
-.scanTitle{
-font-size:22px;
-font-weight:700;
-margin-bottom:16px;
-}
-
-.logs{
-height:220px;
-overflow:auto;
-background:#0f172a;
-border:1px solid #1e293b;
-padding:14px;
-border-radius:18px;
-font-size:11px;
-line-height:1.8;
-opacity:.85;
-}
-
-.logs::-webkit-scrollbar{
-display:none;
-}
-
-.progressBox{
-margin-top:14px;
-background:#111827;
-border-radius:16px;
-padding:12px;
-border:1px solid #1e293b;
-}
-
-.progressText{
-font-size:12px;
-opacity:.7;
-}
-
-.progress{
-height:10px;
-background:#1e293b;
-border-radius:20px;
-margin-top:10px;
-overflow:hidden;
-}
-
-.progressBar{
-height:100%;
-width:0%;
-background:#2563eb;
-transition:.3s;
+opacity:.6;
+margin-top:4px;
 }
 
 .status{
-margin-top:10px;
-font-size:12px;
-color:#60a5fa;
-}
-
-.buttons{
-display:flex;
-gap:10px;
-margin-top:16px;
-}
-
-.btn{
-flex:1;
-padding:15px;
-border-radius:18px;
-text-align:center;
-font-size:13px;
+padding:6px 10px;
+border-radius:30px;
+font-size:11px;
 font-weight:600;
 }
 
-.start{
-background:#172554;
-border:1px solid #2563eb;
+.online{
+background:#14532d;
+color:#4ade80;
 }
 
-.support{
+.offline{
+background:#3f3f46;
+color:#d4d4d8;
+}
+
+.logBox{
 background:#0f172a;
-border:1px solid #334155;
+border:1px solid #1e293b;
+padding:16px;
+border-radius:18px;
+height:220px;
+overflow:auto;
+font-size:12px;
+line-height:1.9;
+opacity:.85;
+}
+
+.logBox::-webkit-scrollbar{
+display:none;
 }
 
 .bottom{
@@ -318,10 +140,10 @@ left:0;
 width:100%;
 background:#0b1120;
 border-top:1px solid #1e293b;
-padding:12px;
+padding:14px;
 display:flex;
 justify-content:space-around;
-font-size:11px;
+font-size:12px;
 }
 
 </style>
@@ -329,420 +151,152 @@ font-size:11px;
 
 <body>
 
-<div class="moneyRain">
-<span>$</span>
-<span>₿</span>
-<span>◆</span>
-<span>◎</span>
-<span>$</span>
-</div>
-
-<div class="page active" id="loginPage">
-
-<div class="center">
-
-<div class="lang">
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('tr')">TR</button>
-</div>
-
-<div class="users">
-👤 <span id="usersText">Total Users</span>:
-<span id="users">17432</span>
-</div>
-
-<div class="title">
-Crypto App
-</div>
-
-<div class="sub" id="sub">
-Private blockchain scanner interface
-</div>
-
-<div class="demo" id="demoText">
-Demo Interface • Educational Use Only
-</div>
-
-<input id="key" placeholder="Access Key">
-
-<button class="loginBtn" onclick="login()" id="continueBtn">
-Continue
-</button>
-
-<div class="boxes">
-
-<div class="box" onclick="telegram()">
-🔐
-<br><br>
-GET ACCESS
-</div>
-
-<div class="box" onclick="telegram()">
-🛠
-<br><br>
-SUPPORT
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="page" id="selectPage">
-
-<div class="selectTitle" id="networkText">
-Blockchain Networks
-</div>
-
-<div class="coin" onclick="openMiner('Bitcoin')">
-
-<div class="left">
-
-<div class="logo btc">₿</div>
-
-<div>
-<div class="tag">RECOMMENDED</div>
-<h2>Bitcoin</h2>
-<p>High speed chain</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-<div class="coin" onclick="openMiner('Ethereum')">
-
-<div class="left">
-
-<div class="logo eth">◆</div>
-
-<div>
-<h2>Ethereum</h2>
-<p>Encrypted smart chain</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-<div class="coin" onclick="openMiner('Solana')">
-
-<div class="left">
-
-<div class="logo sol">◎</div>
-
-<div>
-<div class="tag">POPULAR</div>
-<h2>Solana</h2>
-<p>Fast blockchain network</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-<div class="coin" onclick="openMiner('TON')">
-
-<div class="left">
-
-<div class="logo ton">◉</div>
-
-<div>
-<h2>TON</h2>
-<p>Telegram blockchain</p>
-</div>
-
-</div>
-
-→
-
-</div>
-
-</div>
-
-<div class="page" id="minerPage">
-
 <div class="top">
 
-<h1 id="coinName">Bitcoin</h1>
+<div class="title">
+Admin Panel
+</div>
 
-<div class="energy">
-⚡ 27 ENERGY
+<div class="badge">
+LIVE SYSTEM
 </div>
 
 </div>
 
-<div class="scanTitle" id="scannerText">
-Encrypted Wallet Scanner
+<div class="stats">
+
+<div class="card">
+<h3>Total Users</h3>
+<p id="users">
+17432
+</p>
 </div>
 
-<div class="logs" id="logs"></div>
-
-<div class="progressBox">
-
-<div class="progressText" id="progressText">
-Scanner Progress
+<div class="card">
+<h3>Online</h3>
+<p id="online">
+428
+</p>
 </div>
 
-<div class="progress">
+<div class="card">
+<h3>Sessions</h3>
+<p>
+2.4K
+</p>
+</div>
 
-<div class="progressBar" id="progressBar"></div>
+<div class="card">
+<h3>Networks</h3>
+<p>
+6
+</p>
+</div>
 
 </div>
 
-<div class="status" id="statusText">
-Initializing encrypted scan...
+<div class="section">
+
+<div class="sectionTitle">
+Active Users
+</div>
+
+<div id="userList">
+
+<div class="user">
+
+<div class="left">
+<h2>user_248</h2>
+<p>Bitcoin • 12 min active</p>
+</div>
+
+<div class="status online">
+ONLINE
 </div>
 
 </div>
 
-<div class="buttons">
+<div class="user">
 
-<div class="btn start" onclick="startDemo()" id="startBtn">
-START
+<div class="left">
+<h2>user_781</h2>
+<p>Ethereum • 4 min active</p>
 </div>
 
-<div class="btn support" onclick="telegram()" id="supportBtn">
-SUPPORT
+<div class="status online">
+ONLINE
 </div>
+
+</div>
+
+<div class="user">
+
+<div class="left">
+<h2>user_155</h2>
+<p>TON • 23 min active</p>
+</div>
+
+<div class="status offline">
+OFFLINE
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="sectionTitle">
+System Logs
+</div>
+
+<div class="logBox" id="logs">
+
+[SYSTEM] Admin panel initialized.<br>
+[SYSTEM] Live session tracking enabled.<br>
 
 </div>
 
 </div>
 
 <div class="bottom">
-<div id="dashText">DASHBOARD</div>
-<div id="searchText">SEARCH</div>
-<div onclick="telegram()" id="supportBottom">
-SUPPORT
-</div>
+<div>DASHBOARD</div>
+<div>USERS</div>
+<div>LOGS</div>
+<div>SETTINGS</div>
 </div>
 
 <script>
 
-let lang="en";
-let progress=0;
-let interval;
-
-function telegram(){
-
-window.location.href=
-"https://t.me/dearmadenn";
-
-}
-
-function login(){
-
-document.getElementById("loginPage")
-.classList.remove("active");
-
-document.getElementById("selectPage")
-.classList.add("active");
-
-}
-
-function openMiner(name){
-
-document.getElementById("selectPage")
-.classList.remove("active");
-
-document.getElementById("minerPage")
-.classList.add("active");
-
-document.getElementById("coinName")
-.innerText=name;
-
-}
-
-function startDemo(){
-
 let logs=
 document.getElementById("logs");
 
-let bar=
-document.getElementById("progressBar");
-
-let status=
-document.getElementById("statusText");
-
-progress=0;
-
-logs.innerHTML="";
-
-clearInterval(interval);
-
-interval=setInterval(()=>{
-
-progress+=2;
-
-bar.style.width=progress+"%";
+setInterval(()=>{
 
 let random=
-Math.floor(Math.random()*999999);
+Math.floor(Math.random()*999);
 
-if(lang==="tr"){
+let actions=[
+"connected",
+"selected Bitcoin",
+"opened scanner",
+"changed network",
+"started session",
+"opened dashboard"
+];
+
+let action=
+actions[Math.floor(Math.random()*actions.length)];
 
 logs.innerHTML +=
-"[DEMO] Blockchain #" + random + " tarandı • veri analiz ediliyor.<br>";
-
-status.innerText=
-"Şifreli blockchain verileri analiz ediliyor...";
-
-}else{
-
-logs.innerHTML +=
-"[DEMO] Blockchain #" + random + " scanned • analyzing encrypted data.<br>";
-
-status.innerText=
-"Analyzing encrypted blockchain data...";
-
-}
+"[LIVE] user_"+random+" "+action+".<br>";
 
 logs.scrollTop=
 logs.scrollHeight;
 
-if(progress>=100){
-
-clearInterval(interval);
-
-if(lang==="tr"){
-
-status.innerText=
-"Demo tarama tamamlandı.";
-
-logs.innerHTML +=
-"<br>✅ Demo blockchain analizi başarıyla tamamlandı.";
-
-}else{
-
-status.innerText=
-"Demo scan completed.";
-
-logs.innerHTML +=
-"<br>✅ Demo blockchain analysis completed.";
-
-}
-
-}
-
-},300);
-
-}
-
-function setLang(l){
-
-lang=l;
-
-if(l==="tr"){
-
-document.getElementById("sub")
-.innerText=
-"Özel blockchain tarayıcı arayüzü";
-
-document.getElementById("demoText")
-.innerText=
-"Demo Arayüz • Sadece Eğitim Amaçlı";
-
-document.getElementById("continueBtn")
-.innerText=
-"Devam Et";
-
-document.getElementById("networkText")
-.innerText=
-"Blockchain Ağları";
-
-document.getElementById("scannerText")
-.innerText=
-"Şifrelenmiş Cüzdan Tarayıcı";
-
-document.getElementById("progressText")
-.innerText=
-"Tarama Durumu";
-
-document.getElementById("startBtn")
-.innerText=
-"BAŞLAT";
-
-document.getElementById("supportBtn")
-.innerText=
-"DESTEK";
-
-document.getElementById("dashText")
-.innerText=
-"PANEL";
-
-document.getElementById("searchText")
-.innerText=
-"ARAMA";
-
-document.getElementById("supportBottom")
-.innerText=
-"DESTEK";
-
-document.getElementById("usersText")
-.innerText=
-"Toplam Kullanıcı";
-
-}else{
-
-document.getElementById("sub")
-.innerText=
-"Private blockchain scanner interface";
-
-document.getElementById("demoText")
-.innerText=
-"Demo Interface • Educational Use Only";
-
-document.getElementById("continueBtn")
-.innerText=
-"Continue";
-
-document.getElementById("networkText")
-.innerText=
-"Blockchain Networks";
-
-document.getElementById("scannerText")
-.innerText=
-"Encrypted Wallet Scanner";
-
-document.getElementById("progressText")
-.innerText=
-"Scanner Progress";
-
-document.getElementById("startBtn")
-.innerText=
-"START";
-
-document.getElementById("supportBtn")
-.innerText=
-"SUPPORT";
-
-document.getElementById("dashText")
-.innerText=
-"DASHBOARD";
-
-document.getElementById("searchText")
-.innerText=
-"SEARCH";
-
-document.getElementById("supportBottom")
-.innerText=
-"SUPPORT";
-
-document.getElementById("usersText")
-.innerText=
-"Total Users";
-
-}
-
-}
+},3000);
 
 setInterval(()=>{
 
@@ -754,7 +308,15 @@ users += Math.floor(Math.random()*2);
 document.getElementById("users").innerText=
 users;
 
-},4000);
+let online=
+parseInt(document.getElementById("online").innerText);
+
+online += Math.floor(Math.random()*5)-2;
+
+document.getElementById("online").innerText=
+online;
+
+},5000);
 
 </script>
 
