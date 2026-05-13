@@ -3,23 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Crypto App</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Inter',sans-serif;
+font-family:Arial,sans-serif;
 -webkit-tap-highlight-color:transparent;
 }
 
 body{
-background:#030712;
+background:#020617;
 color:white;
 overflow:hidden;
 }
@@ -27,10 +24,9 @@ overflow:hidden;
 .moneyRain{
 position:fixed;
 inset:0;
-overflow:hidden;
 pointer-events:none;
-opacity:0.05;
-z-index:-1;
+overflow:hidden;
+opacity:.06;
 }
 
 .moneyRain span{
@@ -41,23 +37,21 @@ animation:fall 12s linear infinite;
 }
 
 .moneyRain span:nth-child(1){left:10%;animation-delay:0s;}
-.moneyRain span:nth-child(2){left:25%;animation-delay:2s;}
-.moneyRain span:nth-child(3){left:40%;animation-delay:5s;}
-.moneyRain span:nth-child(4){left:55%;animation-delay:1s;}
-.moneyRain span:nth-child(5){left:70%;animation-delay:4s;}
-.moneyRain span:nth-child(6){left:85%;animation-delay:3s;}
-.moneyRain span:nth-child(7){left:95%;animation-delay:6s;}
+.moneyRain span:nth-child(2){left:30%;animation-delay:2s;}
+.moneyRain span:nth-child(3){left:50%;animation-delay:4s;}
+.moneyRain span:nth-child(4){left:70%;animation-delay:1s;}
+.moneyRain span:nth-child(5){left:90%;animation-delay:3s;}
 
 @keyframes fall{
 0%{
-transform:translateY(-100px) rotate(0deg);
+transform:translateY(-100px);
 opacity:0;
 }
 10%{
 opacity:1;
 }
 100%{
-transform:translateY(120vh) rotate(360deg);
+transform:translateY(120vh);
 opacity:0;
 }
 }
@@ -72,242 +66,107 @@ padding:18px;
 display:block;
 }
 
-.splash{
-position:fixed;
-inset:0;
-background:#030712;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9999;
-animation:hideSplash 1s forwards;
-animation-delay:2s;
-}
-
-@keyframes hideSplash{
-to{
-opacity:0;
-visibility:hidden;
-}
-}
-
-.loader{
-width:80px;
-height:80px;
-border-radius:50%;
-border:4px solid #1e293b;
-border-top:4px solid #60a5fa;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-.splash h1{
-margin-top:20px;
-font-size:28px;
-font-weight:700;
-}
-
-.splash p{
-opacity:0.6;
-margin-top:8px;
-font-size:13px;
-}
-
-.bg{
-position:absolute;
-right:-20px;
-top:-20px;
-font-size:150px;
-font-weight:700;
-opacity:0.03;
-color:#60a5fa;
-pointer-events:none;
-}
-
 .center{
-padding-top:55px;
+padding-top:50px;
 text-align:center;
 }
 
-.langSwitch{
-display:flex;
-justify-content:center;
-gap:8px;
-margin-bottom:14px;
-}
-
-.langSwitch button{
-background:#0f172a;
-border:1px solid #1e293b;
-color:white;
-padding:8px 16px;
-border-radius:12px;
-font-size:12px;
-}
-
-.usersBox{
-background:#0f172a;
-border:1px solid #1e293b;
-padding:12px;
-border-radius:16px;
-margin-bottom:18px;
-font-size:13px;
-opacity:0.9;
-}
-
 .title{
-font-size:32px;
-font-weight:600;
-letter-spacing:-1px;
+font-size:34px;
+font-weight:bold;
 }
 
 .sub{
-opacity:0.55;
 margin-top:8px;
-margin-bottom:20px;
+opacity:.6;
 font-size:13px;
+}
+
+.users{
+margin-top:18px;
+background:#0f172a;
+padding:12px;
+border-radius:14px;
+border:1px solid #1e293b;
+font-size:13px;
+}
+
+.lang{
+display:flex;
+gap:8px;
+justify-content:center;
+margin-bottom:14px;
+}
+
+.lang button{
+background:#111827;
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:12px;
 }
 
 input{
 width:100%;
 padding:16px;
-border:none;
-border-radius:20px;
+margin-top:12px;
 background:#0f172a;
 border:1px solid #1e293b;
+border-radius:18px;
 color:white;
 font-size:14px;
 outline:none;
-margin-top:10px;
 }
 
 .loginBtn{
 width:100%;
 padding:16px;
+margin-top:14px;
 border:none;
-border-radius:20px;
-margin-top:16px;
-background:linear-gradient(90deg,#60a5fa,#2563eb);
+border-radius:18px;
+background:#2563eb;
 color:white;
 font-size:14px;
-font-weight:600;
+font-weight:bold;
 }
 
 .error{
 margin-top:12px;
 color:#ef4444;
-font-size:13px;
 display:none;
+font-size:13px;
 }
 
 .boxes{
 display:flex;
 gap:10px;
-margin-top:30px;
+margin-top:25px;
 }
 
 .box{
 flex:1;
 background:#0f172a;
 border:1px solid #1e293b;
-padding:22px 8px;
-border-radius:22px;
+padding:20px 10px;
+border-radius:20px;
 font-size:12px;
-font-weight:600;
-}
-
-.icon{
-font-size:24px;
-margin-bottom:12px;
 }
 
 .selectTitle{
-font-size:24px;
-font-weight:600;
-margin-bottom:18px;
-}
-
-.stats{
-display:flex;
-gap:10px;
-margin-bottom:16px;
-}
-
-.stat{
-flex:1;
-background:#0f172a;
-border:1px solid #1e293b;
-padding:14px;
-border-radius:18px;
-}
-
-.stat h3{
-font-size:11px;
-opacity:0.6;
-font-weight:400;
-}
-
-.stat p{
-margin-top:8px;
-font-size:15px;
-font-weight:600;
-}
-
-.activityBox{
-margin-top:14px;
-background:#0f172a;
-border:1px solid #1e293b;
-padding:14px;
-border-radius:18px;
-font-size:12px;
-line-height:1.9;
-}
-
-.activityTitle{
-font-size:13px;
-font-weight:600;
-margin-bottom:8px;
-opacity:0.7;
+font-size:25px;
+font-weight:bold;
+margin-bottom:20px;
 }
 
 .coin{
-position:relative;
 background:#0f172a;
 border:1px solid #1e293b;
-padding:14px;
-border-radius:20px;
+padding:15px;
+border-radius:18px;
 margin-bottom:12px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-}
-
-.coinSub{
-font-size:11px;
-opacity:0.55;
-margin-top:3px;
-}
-
-.tag{
-position:absolute;
-top:-7px;
-right:12px;
-background:#2563eb;
-padding:5px 9px;
-border-radius:30px;
-font-size:9px;
-font-weight:700;
-}
-
-.recommended{
-border:1px solid #2563eb;
-box-shadow:0 0 18px rgba(37,99,235,0.12);
 }
 
 .left{
@@ -317,31 +176,38 @@ gap:12px;
 }
 
 .logo{
-width:44px;
-height:44px;
+width:42px;
+height:42px;
 border-radius:50%;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:18px;
-font-weight:700;
+font-weight:bold;
 }
 
 .btc{background:#f7931a;}
 .eth{background:#627eea;}
 .sol{background:#14f195;color:black;}
 .bnb{background:#f3ba2f;color:black;}
-.xrp{background:#111827;}
-.ton{background:#0098ea;}
+.xrp{background:#111827;border:1px solid #334155;}
 
 .coin h2{
 font-size:15px;
-font-weight:600;
 }
 
-.arrow{
-opacity:0.4;
-font-size:20px;
+.coin p{
+font-size:11px;
+opacity:.5;
+margin-top:2px;
+}
+
+.tag{
+background:#2563eb;
+padding:4px 8px;
+border-radius:30px;
+font-size:9px;
+margin-bottom:5px;
+display:inline-block;
 }
 
 .top{
@@ -349,11 +215,6 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 margin-bottom:14px;
-}
-
-.top h1{
-font-size:24px;
-font-weight:600;
 }
 
 .energy{
@@ -366,12 +227,12 @@ border:1px solid #1e293b;
 
 .scanTitle{
 font-size:24px;
-font-weight:600;
+font-weight:bold;
 margin-bottom:16px;
 }
 
 .logs{
-height:190px;
+height:200px;
 overflow:auto;
 background:#0f172a;
 border:1px solid #1e293b;
@@ -379,7 +240,7 @@ padding:14px;
 border-radius:20px;
 font-size:11px;
 line-height:1.8;
-opacity:0.82;
+opacity:.8;
 }
 
 .logs::-webkit-scrollbar{
@@ -389,70 +250,42 @@ display:none;
 .found{
 margin-top:16px;
 font-size:28px;
-font-weight:600;
+font-weight:bold;
 }
 
 .green{
 color:#22c55e;
 }
 
-.chart{
-height:70px;
-background:linear-gradient(180deg,#0f172a,#020617);
-border-radius:18px;
-margin-top:14px;
-position:relative;
-overflow:hidden;
-border:1px solid #1e293b;
-}
-
-.line{
-position:absolute;
-width:160%;
-height:2px;
-background:#60a5fa;
-top:50%;
-left:-20%;
-transform:rotate(-6deg);
-animation:move 4s linear infinite;
-}
-
-@keyframes move{
-0%{transform:translateX(-20%) rotate(-6deg);}
-100%{transform:translateX(20%) rotate(-6deg);}
-}
-
-.estimateBox{
+.estimate{
 margin-top:12px;
 background:#111827;
-border:1px solid #1e293b;
 padding:12px;
 border-radius:16px;
 font-size:12px;
 text-align:center;
-line-height:1.7;
+border:1px solid #1e293b;
 }
 
-.estimateTime{
-margin-top:6px;
-font-size:15px;
-font-weight:600;
+.time{
+margin-top:5px;
+font-size:16px;
 color:#60a5fa;
+font-weight:bold;
 }
 
-.miniBoost{
+.boost{
 margin-top:12px;
 background:#111827;
-border:1px solid #334155;
 padding:12px;
 border-radius:16px;
+border:1px solid #334155;
 font-size:12px;
 text-align:center;
-line-height:1.7;
 }
 
-.miniBoost span{
-opacity:0.6;
+.boost span{
+opacity:.6;
 font-size:10px;
 }
 
@@ -468,7 +301,7 @@ padding:16px;
 border-radius:18px;
 text-align:center;
 font-size:13px;
-font-weight:600;
+font-weight:bold;
 }
 
 .start{
@@ -492,7 +325,6 @@ padding:12px;
 display:flex;
 justify-content:space-around;
 font-size:11px;
-opacity:0.75;
 }
 
 .popup{
@@ -501,39 +333,34 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 background:#0f172a;
-border:1px solid #334155;
 padding:22px;
-border-radius:24px;
+border-radius:22px;
 width:88%;
 display:none;
-z-index:999;
+border:1px solid #334155;
 }
 
 .popup h2{
-font-size:20px;
 margin-bottom:10px;
-font-weight:600;
 }
 
 .popup p{
-opacity:0.65;
-line-height:1.7;
 font-size:12px;
+opacity:.7;
+line-height:1.6;
 }
 
 .popup button{
-margin-top:14px;
 width:100%;
 padding:14px;
+margin-top:12px;
 border:none;
 border-radius:16px;
 background:#2563eb;
 color:white;
-font-size:13px;
 }
 
 .closeBtn{
-margin-top:8px !important;
 background:#111827 !important;
 border:1px solid #334155;
 }
@@ -547,16 +374,398 @@ border:1px solid #334155;
 <span>$</span>
 <span>₿</span>
 <span>◆</span>
-<span>$</span>
 <span>◎</span>
-<span>◈</span>
 <span>$</span>
 </div>
 
-<div class="splash">
-<div class="loader"></div>
-<h1>Crypto App</h1>
-<p>Initializing encrypted blockchain scanner...</p>
+<div class="page active" id="loginPage">
+
+<div class="center">
+
+<div class="lang">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('tr')">TR</button>
 </div>
 
-<!-- devamı önceki verdiğim kodla aynı kalıyor -->
+<div class="users">
+👤 Total Users:
+<span id="users">17432</span>
+</div>
+
+<div class="title">
+Crypto App
+</div>
+
+<div class="sub">
+Private blockchain wallet access
+</div>
+
+<input id="key" placeholder="Access Key">
+
+<button class="loginBtn" onclick="login()">
+Continue
+</button>
+
+<div class="error" id="error">
+Invalid key
+</div>
+
+<div class="boxes">
+
+<div class="box" onclick="telegram()">
+🔐
+<br><br>
+GET ACCESS
+</div>
+
+<div class="box" onclick="telegram()">
+🛠
+<br><br>
+SUPPORT
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="page" id="selectPage">
+
+<div class="selectTitle">
+Blockchain Networks
+</div>
+
+<div class="coin" onclick="openMiner('Bitcoin')">
+
+<div class="left">
+
+<div class="logo btc">₿</div>
+
+<div>
+<div class="tag">RECOMMENDED</div>
+<h2>Bitcoin</h2>
+<p>High speed chain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openMiner('Ethereum')">
+
+<div class="left">
+
+<div class="logo eth">◆</div>
+
+<div>
+<h2>Ethereum</h2>
+<p>Encrypted smart chain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openMiner('Solana')">
+
+<div class="left">
+
+<div class="logo sol">◎</div>
+
+<div>
+<div class="tag">POPULAR</div>
+<h2>Solana</h2>
+<p>Fast blockchain network</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openMiner('BNB')">
+
+<div class="left">
+
+<div class="logo bnb">◈</div>
+
+<div>
+<h2>BNB</h2>
+<p>Secure wallet scan</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openMiner('XRP')">
+
+<div class="left">
+
+<div class="logo xrp">✕</div>
+
+<div>
+<h2>XRP</h2>
+<p>Low latency transfers</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+</div>
+
+<div class="page" id="minerPage">
+
+<div class="top">
+<h1 id="coinName">Bitcoin</h1>
+<div class="energy">
+⚡ 27 ENERGY
+</div>
+</div>
+
+<div class="scanTitle">
+Encrypted Wallet Scanner
+</div>
+
+<div class="logs" id="logs"></div>
+
+<div class="found">
+Found:
+<span class="green" id="money">$0</span>
+</div>
+
+<div class="estimate">
+Estimated time remaining
+<div class="time" id="time">
+01:30
+</div>
+</div>
+
+<div class="boost" onclick="telegram()">
+⚡ BOOST SCANNER
+<br>
+<span>
+Contact for premium boost access
+</span>
+</div>
+
+<div class="buttons">
+
+<div class="btn start" id="scanBtn" onclick="scan()">
+START
+</div>
+
+<div class="btn withdraw" onclick="popup()">
+WITHDRAW
+</div>
+
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+
+<h2>
+Withdraw System
+</h2>
+
+<p>
+Minimum withdraw amount is $10
+</p>
+
+<input placeholder="Wallet Address">
+
+<input placeholder="IBAN">
+
+<button onclick="telegram()">
+REQUEST WITHDRAW
+</button>
+
+<button class="closeBtn" onclick="closePopup()">
+Close
+</button>
+
+</div>
+
+<div class="bottom">
+<div>DASHBOARD</div>
+<div>SEARCH</div>
+<div onclick="telegram()">SUPPORT</div>
+</div>
+
+<script>
+
+let found=0;
+let scanning=false;
+let interval;
+let time=90;
+
+function telegram(){
+window.location.href="https://t.me/dearmadenn";
+}
+
+function login(){
+
+let key=document.getElementById("key").value;
+
+if(key==="dearmaden66"){
+
+document.getElementById("loginPage").classList.remove("active");
+
+document.getElementById("selectPage").classList.add("active");
+
+}else{
+
+document.getElementById("error").style.display="block";
+
+}
+
+}
+
+function openMiner(name){
+
+document.getElementById("selectPage").classList.remove("active");
+
+document.getElementById("minerPage").classList.add("active");
+
+document.getElementById("coinName").innerText=name;
+
+}
+
+function scan(){
+
+let logs=document.getElementById("logs");
+let btn=document.getElementById("scanBtn");
+
+if(!scanning){
+
+scanning=true;
+
+btn.innerText="STOP";
+
+interval=setInterval(()=>{
+
+let random=Math.floor(Math.random()*999999);
+
+logs.innerHTML +=
+"[SYSTEM] Wallet #"+random+" scanned • encrypted address • no balance found.<br>";
+
+logs.scrollTop=logs.scrollHeight;
+
+if(Math.random()<0.03){
+
+found += Math.floor(Math.random()*3)+1;
+
+document.getElementById("money").innerText=
+"$"+found;
+
+}
+
+if(time>0){
+
+time--;
+
+let min=Math.floor(time/60);
+let sec=time%60;
+
+if(sec<10){
+sec="0"+sec;
+}
+
+document.getElementById("time").innerText=
+"0"+min+":"+sec;
+
+}
+
+},1000);
+
+}else{
+
+scanning=false;
+
+btn.innerText="START";
+
+clearInterval(interval);
+
+}
+
+}
+
+function popup(){
+
+document.getElementById("popup").style.display="block";
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+function setLang(lang){
+
+if(lang==="tr"){
+
+document.querySelector(".sub").innerText=
+"Özel blockchain cüzdan erişimi";
+
+document.querySelector(".loginBtn").innerText=
+"Devam Et";
+
+document.querySelector(".selectTitle").innerText=
+"Blockchain Ağları";
+
+document.querySelector(".scanTitle").innerText=
+"Şifrelenmiş Cüzdan Tarayıcı";
+
+document.querySelector(".boost span").innerText=
+"Premium boost erişimi için ulaşın";
+
+}else{
+
+document.querySelector(".sub").innerText=
+"Private blockchain wallet access";
+
+document.querySelector(".loginBtn").innerText=
+"Continue";
+
+document.querySelector(".selectTitle").innerText=
+"Blockchain Networks";
+
+document.querySelector(".scanTitle").innerText=
+"Encrypted Wallet Scanner";
+
+document.querySelector(".boost span").innerText=
+"Contact for premium boost access";
+
+}
+
+}
+
+setInterval(()=>{
+
+let users=
+parseInt(document.getElementById("users").innerText);
+
+users += Math.floor(Math.random()*2);
+
+document.getElementById("users").innerText=users;
+
+},4000);
+
+</script>
+
+</body>
+</html>
