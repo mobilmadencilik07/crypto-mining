@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Crypto App</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -11,50 +14,59 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Inter',sans-serif;
 -webkit-tap-highlight-color:transparent;
 }
 
 body{
-background:#020617;
+background:
+radial-gradient(circle at top,#0f1b4d,#020617 60%);
 color:white;
 overflow:hidden;
 }
+
+/* BG */
 
 .moneyRain{
 position:fixed;
 inset:0;
 pointer-events:none;
 overflow:hidden;
-opacity:.06;
+opacity:.05;
 }
 
 .moneyRain span{
 position:absolute;
-top:-50px;
-font-size:24px;
-animation:fall 12s linear infinite;
+top:-100px;
+font-size:26px;
+animation:fall 14s linear infinite;
 }
 
 .moneyRain span:nth-child(1){left:10%;animation-delay:0s;}
-.moneyRain span:nth-child(2){left:30%;animation-delay:2s;}
-.moneyRain span:nth-child(3){left:50%;animation-delay:4s;}
-.moneyRain span:nth-child(4){left:70%;animation-delay:1s;}
-.moneyRain span:nth-child(5){left:90%;animation-delay:3s;}
+.moneyRain span:nth-child(2){left:30%;animation-delay:3s;}
+.moneyRain span:nth-child(3){left:50%;animation-delay:1s;}
+.moneyRain span:nth-child(4){left:70%;animation-delay:5s;}
+.moneyRain span:nth-child(5){left:90%;animation-delay:2s;}
 
 @keyframes fall{
+
 0%{
 transform:translateY(-100px);
 opacity:0;
 }
+
 10%{
 opacity:1;
 }
+
 100%{
 transform:translateY(120vh);
 opacity:0;
 }
+
 }
+
+/* PAGE */
 
 .page{
 display:none;
@@ -67,14 +79,28 @@ overflow:auto;
 display:block;
 }
 
+/* LOGIN */
+
 .center{
-padding-top:50px;
+padding-top:55px;
 text-align:center;
 }
 
 .title{
-font-size:34px;
-font-weight:bold;
+
+font-size:40px;
+font-weight:800;
+
+background:
+linear-gradient(
+90deg,
+#60a5fa,
+#2563eb
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
 }
 
 .sub{
@@ -84,12 +110,22 @@ font-size:13px;
 }
 
 .users{
+
 margin-top:18px;
-background:#0f172a;
+
+background:
+rgba(15,23,42,.72);
+
+backdrop-filter:blur(18px);
+
 padding:12px;
-border-radius:14px;
-border:1px solid #1e293b;
+
+border-radius:16px;
+
+border:1px solid rgba(255,255,255,.08);
+
 font-size:13px;
+
 }
 
 .lang{
@@ -100,35 +136,69 @@ margin-bottom:14px;
 }
 
 .lang button{
-background:#111827;
+
+background:
+rgba(15,23,42,.72);
+
 border:none;
+
 color:white;
+
 padding:8px 14px;
+
 border-radius:12px;
+
 }
 
 input{
+
 width:100%;
+
 padding:16px;
-margin-top:12px;
-background:#0f172a;
-border:1px solid #1e293b;
+
+margin-top:14px;
+
+background:
+rgba(15,23,42,.72);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
 border-radius:18px;
+
 color:white;
-font-size:14px;
+
 outline:none;
+
 }
 
 .loginBtn{
+
 width:100%;
+
 padding:16px;
+
 margin-top:14px;
+
 border:none;
+
 border-radius:18px;
-background:#2563eb;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#60a5fa
+);
+
 color:white;
-font-size:14px;
-font-weight:bold;
+
+font-weight:700;
+
+box-shadow:
+0 0 24px rgba(37,99,235,.35);
+
 }
 
 .error{
@@ -141,34 +211,55 @@ font-size:13px;
 .boxes{
 display:flex;
 gap:10px;
-margin-top:25px;
+margin-top:22px;
 }
 
 .box{
+
 flex:1;
-background:#0f172a;
-border:1px solid #1e293b;
+
+background:
+rgba(15,23,42,.72);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
 padding:20px 10px;
+
 border-radius:20px;
+
 font-size:12px;
-text-align:center;
+
 }
 
+/* SELECT */
+
 .selectTitle{
-font-size:25px;
-font-weight:bold;
-margin-bottom:20px;
+font-size:26px;
+font-weight:700;
+margin-bottom:18px;
 }
 
 .coin{
-background:#0f172a;
-border:1px solid #1e293b;
+
+background:
+rgba(15,23,42,.72);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
 padding:15px;
-border-radius:18px;
+
+border-radius:20px;
+
 margin-bottom:12px;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 }
 
 .left{
@@ -178,8 +269,8 @@ gap:12px;
 }
 
 .logo{
-width:42px;
-height:42px;
+width:44px;
+height:44px;
 border-radius:50%;
 display:flex;
 justify-content:center;
@@ -190,8 +281,6 @@ font-weight:bold;
 .btc{background:#f7931a;}
 .eth{background:#627eea;}
 .sol{background:#14f195;color:black;}
-.bnb{background:#f3ba2f;color:black;}
-.xrp{background:#111827;border:1px solid #334155;}
 
 .coin h2{
 font-size:15px;
@@ -208,9 +297,11 @@ background:#2563eb;
 padding:4px 8px;
 border-radius:30px;
 font-size:9px;
-margin-bottom:5px;
 display:inline-block;
+margin-bottom:5px;
 }
+
+/* MINER */
 
 .top{
 display:flex;
@@ -219,22 +310,59 @@ align-items:center;
 margin-bottom:14px;
 }
 
+.miniBalance{
+
+background:
+linear-gradient(
+90deg,
+#14532d,
+#22c55e
+);
+
+padding:7px 12px;
+
+border-radius:30px;
+
+font-size:11px;
+
+font-weight:700;
+
+box-shadow:
+0 0 14px rgba(34,197,94,.35);
+
+}
+
 .scanTitle{
 font-size:24px;
-font-weight:bold;
+font-weight:700;
 margin-bottom:16px;
 }
 
 .logs{
-height:200px;
+
+height:220px;
+
 overflow:auto;
-background:#0f172a;
-border:1px solid #1e293b;
+
+background:
+rgba(15,23,42,.72);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
 padding:14px;
-border-radius:20px;
+
+border-radius:22px;
+
 font-size:11px;
+
 line-height:1.8;
-opacity:.8;
+
+font-family:monospace;
+
+color:#4ade80;
+
 }
 
 .logs::-webkit-scrollbar{
@@ -244,36 +372,33 @@ display:none;
 .found{
 margin-top:16px;
 font-size:28px;
-font-weight:bold;
+font-weight:700;
 }
 
 .green{
 color:#22c55e;
 }
 
-.estimate{
-margin-top:12px;
-background:#111827;
-padding:12px;
-border-radius:16px;
-font-size:12px;
-text-align:center;
-border:1px solid #1e293b;
-}
-
+.estimate,
 .boost{
-margin-top:12px;
-background:#111827;
-padding:12px;
-border-radius:16px;
-border:1px solid #334155;
-font-size:12px;
-text-align:center;
-}
 
-.boost span{
-opacity:.6;
-font-size:10px;
+margin-top:12px;
+
+background:
+rgba(15,23,42,.72);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+padding:14px;
+
+border-radius:18px;
+
+font-size:12px;
+
+line-height:1.8;
+
 }
 
 .buttons{
@@ -283,48 +408,59 @@ margin-top:16px;
 }
 
 .btn{
+
 flex:1;
+
 padding:16px;
+
 border-radius:18px;
+
 text-align:center;
+
 font-size:13px;
-font-weight:bold;
+
+font-weight:700;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#60a5fa
+);
+
+box-shadow:
+0 0 24px rgba(37,99,235,.25);
+
 }
 
-.start{
-background:#172554;
-border:1px solid #1d4ed8;
-}
-
-.withdraw{
-background:#0f172a;
-border:1px solid #334155;
-}
-
-.bottom{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#0b1120;
-border-top:1px solid #1e293b;
-padding:12px;
-display:flex;
-justify-content:space-around;
-font-size:11px;
-}
+/* POPUP */
 
 .popup{
+
 position:fixed;
+
 top:50%;
 left:50%;
+
 transform:translate(-50%,-50%);
-background:#0f172a;
-padding:22px;
-border-radius:22px;
+
 width:88%;
+
 display:none;
-border:1px solid #334155;
+
+background:
+rgba(15,23,42,.95);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+padding:22px;
+
+border-radius:24px;
+
+z-index:999;
+
 }
 
 .popup h2{
@@ -334,36 +470,63 @@ margin-bottom:10px;
 .popup p{
 font-size:12px;
 opacity:.7;
-line-height:1.6;
+line-height:1.7;
 }
 
 .popup button{
+
 width:100%;
+
 padding:14px;
+
 margin-top:12px;
+
 border:none;
+
 border-radius:16px;
-background:#2563eb;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#60a5fa
+);
+
 color:white;
+
+font-weight:700;
+
 }
 
 .closeBtn{
 background:#111827 !important;
-border:1px solid #334155;
 }
 
-.miniBalance{
-position:absolute;
-top:18px;
-right:18px;
-background:linear-gradient(90deg,#14532d,#22c55e);
-padding:6px 12px;
-border-radius:30px;
+/* BOTTOM */
+
+.bottom{
+
+position:fixed;
+
+bottom:0;
+left:0;
+
+width:100%;
+
+background:
+rgba(2,6,23,.9);
+
+backdrop-filter:blur(16px);
+
+border-top:1px solid rgba(255,255,255,.08);
+
+padding:12px;
+
+display:flex;
+justify-content:space-around;
+
 font-size:11px;
-font-weight:bold;
-box-shadow:0 0 14px rgba(34,197,94,.35);
-border:1px solid rgba(255,255,255,.08);
-display:none;
+
 }
 
 </style>
@@ -378,6 +541,8 @@ display:none;
 <span>◎</span>
 <span>$</span>
 </div>
+
+<!-- LOGIN -->
 
 <div class="page active" id="loginPage">
 
@@ -431,6 +596,8 @@ SUPPORT
 
 </div>
 
+<!-- SELECT -->
+
 <div class="page" id="selectPage">
 
 <div class="selectTitle">
@@ -438,57 +605,85 @@ Blockchain Networks
 </div>
 
 <div class="coin" onclick="openMiner('Bitcoin')">
+
 <div class="left">
+
 <div class="logo btc">₿</div>
+
 <div>
 <div class="tag">RECOMMENDED</div>
 <h2>Bitcoin</h2>
-<p>High speed chain</p>
+<p>High speed blockchain</p>
 </div>
+
 </div>
+
 →
+
 </div>
 
 <div class="coin" onclick="openMiner('Ethereum')">
+
 <div class="left">
+
 <div class="logo eth">◆</div>
+
 <div>
 <h2>Ethereum</h2>
 <p>Encrypted smart chain</p>
 </div>
+
 </div>
+
 →
+
 </div>
 
 <div class="coin" onclick="openMiner('Solana')">
+
 <div class="left">
+
 <div class="logo sol">◎</div>
+
 <div>
 <div class="tag">POPULAR</div>
 <h2>Solana</h2>
 <p>Fast blockchain network</p>
 </div>
+
 </div>
+
 →
+
 </div>
 
 </div>
+
+<!-- MINER -->
 
 <div class="page" id="minerPage">
 
-<div class="miniBalance" id="balanceBox">
+<div class="top">
+
+<h1 id="coinName">
+Bitcoin
+</h1>
+
+<div class="miniBalance">
 💰 $<span id="balance">0</span>
 </div>
 
-<div class="top">
-<h1 id="coinName">Bitcoin</h1>
 </div>
 
 <div class="scanTitle">
 Encrypted Wallet Scanner
 </div>
 
-<div class="logs" id="logs"></div>
+<div class="logs" id="logs">
+
+[SYSTEM] Scanner initialized...<br>
+
+</div>
 
 <div class="found">
 Found:
@@ -496,32 +691,40 @@ Found:
 </div>
 
 <div class="estimate">
+
 • Encrypted node scanning<br>
 • Wallet hash analysis<br>
-• Secure blockchain indexing
+• Secure blockchain indexing<br>
+• Network synchronization active
+
 </div>
 
 <div class="boost" onclick="telegram()">
+
 ⚡ BOOST SCANNER
 <br>
-<span>
+
+<span style="opacity:.6;">
 Contact for premium boost access
 </span>
+
 </div>
 
 <div class="buttons">
 
-<div class="btn start" id="scanBtn" onclick="scan()">
+<div class="btn" id="scanBtn" onclick="scan()">
 START
 </div>
 
-<div class="btn withdraw" onclick="popup()">
+<div class="btn" onclick="popup()">
 WITHDRAW
 </div>
 
 </div>
 
 </div>
+
+<!-- POPUP -->
 
 <div class="popup" id="popup">
 
@@ -530,7 +733,7 @@ Withdraw System
 </h2>
 
 <p>
-Wallet verification system
+Wallet verification required
 </p>
 
 <input placeholder="Wallet Address">
@@ -546,10 +749,22 @@ Close
 
 </div>
 
+<!-- BOTTOM -->
+
 <div class="bottom">
-<div>DASHBOARD</div>
-<div>SEARCH</div>
-<div onclick="telegram()">SUPPORT</div>
+
+<div>
+HOME
+</div>
+
+<div>
+SEARCH
+</div>
+
+<div onclick="telegram()">
+SUPPORT
+</div>
+
 </div>
 
 <script>
@@ -560,21 +775,29 @@ let scanning=false;
 let interval;
 
 function telegram(){
-window.location.href="https://t.me/dearmadenn";
+
+window.location.href=
+"https://t.me/dearmadenn";
+
 }
 
 function login(){
 
-let key=document.getElementById("key").value;
+let key=
+document.getElementById("key").value;
 
 if(key==="dearmaden66"){
 
-document.getElementById("loginPage").classList.remove("active");
-document.getElementById("selectPage").classList.add("active");
+document.getElementById("loginPage")
+.classList.remove("active");
+
+document.getElementById("selectPage")
+.classList.add("active");
 
 }else{
 
-document.getElementById("error").style.display="block";
+document.getElementById("error")
+.style.display="block";
 
 }
 
@@ -582,43 +805,58 @@ document.getElementById("error").style.display="block";
 
 function openMiner(name){
 
-document.getElementById("selectPage").classList.remove("active");
-document.getElementById("minerPage").classList.add("active");
+document.getElementById("selectPage")
+.classList.remove("active");
 
-document.getElementById("coinName").innerText=name;
+document.getElementById("minerPage")
+.classList.add("active");
 
-document.getElementById("balanceBox").style.display="block";
+document.getElementById("coinName")
+.innerText=name;
 
 }
 
 function scan(){
 
-let logs=document.getElementById("logs");
-let btn=document.getElementById("scanBtn");
+let logs=
+document.getElementById("logs");
+
+let btn=
+document.getElementById("scanBtn");
 
 if(!scanning){
 
 scanning=true;
+
 btn.innerText="STOP";
 
 interval=setInterval(()=>{
 
-let random=Math.floor(Math.random()*999999);
+let random=
+Math.floor(Math.random()*999999);
 
 logs.innerHTML +=
-"[SYSTEM] Wallet #"+random+" scanned • encrypted address • no balance found.<br>";
+"[SYSTEM] Wallet #"+random+
+" analyzed successfully.<br>";
 
-logs.scrollTop=logs.scrollHeight;
+logs.scrollTop=
+logs.scrollHeight;
 
 if(Math.random()<0.03){
 
-let gain=Math.floor(Math.random()*3)+1;
+let gain=
+Math.floor(Math.random()*3)+1;
 
 found += gain;
 balance += gain;
 
-document.getElementById("money").innerText="$"+found;
-document.getElementById("balance").innerText=balance;
+document.getElementById("money")
+.innerText=
+"$"+found;
+
+document.getElementById("balance")
+.innerText=
+balance;
 
 }
 
@@ -627,7 +865,9 @@ document.getElementById("balance").innerText=balance;
 }else{
 
 scanning=false;
+
 btn.innerText="START";
+
 clearInterval(interval);
 
 }
@@ -635,41 +875,55 @@ clearInterval(interval);
 }
 
 function popup(){
-document.getElementById("popup").style.display="block";
+
+document.getElementById("popup")
+.style.display="block";
+
 }
 
 function closePopup(){
-document.getElementById("popup").style.display="none";
+
+document.getElementById("popup")
+.style.display="none";
+
 }
 
 function setLang(lang){
 
 if(lang==="tr"){
 
-document.querySelector(".sub").innerText=
+document.querySelector(".sub")
+.innerText=
 "Özel blockchain cüzdan erişimi";
 
-document.querySelector(".loginBtn").innerText=
+document.querySelector(".loginBtn")
+.innerText=
 "Devam Et";
 
-document.querySelector(".selectTitle").innerText=
+document.querySelector(".selectTitle")
+.innerText=
 "Blockchain Ağları";
 
-document.querySelector(".scanTitle").innerText=
+document.querySelector(".scanTitle")
+.innerText=
 "Şifrelenmiş Cüzdan Tarayıcı";
 
 }else{
 
-document.querySelector(".sub").innerText=
+document.querySelector(".sub")
+.innerText=
 "Private blockchain wallet access";
 
-document.querySelector(".loginBtn").innerText=
+document.querySelector(".loginBtn")
+.innerText=
 "Continue";
 
-document.querySelector(".selectTitle").innerText=
+document.querySelector(".selectTitle")
+.innerText=
 "Blockchain Networks";
 
-document.querySelector(".scanTitle").innerText=
+document.querySelector(".scanTitle")
+.innerText=
 "Encrypted Wallet Scanner";
 
 }
@@ -678,11 +932,16 @@ document.querySelector(".scanTitle").innerText=
 
 setInterval(()=>{
 
-let users=parseInt(document.getElementById("users").innerText);
+let users=
+parseInt(
+document.getElementById("users").innerText
+);
 
-users += Math.floor(Math.random()*2);
+users +=
+Math.floor(Math.random()*2);
 
-document.getElementById("users").innerText=users;
+document.getElementById("users")
+.innerText=users;
 
 },4000);
 
