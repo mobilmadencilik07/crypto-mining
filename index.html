@@ -21,11 +21,210 @@ color:white;
 overflow:hidden;
 }
 
-.page{
-min-height:100vh;
-padding:20px;
-position:relative;
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+inset:0;
 overflow:hidden;
+pointer-events:none;
+opacity:.08;
+}
+
+.bg span{
+position:absolute;
+top:-100px;
+font-size:22px;
+animation:fall 12s linear infinite;
+}
+
+.bg span:nth-child(1){left:10%;animation-delay:0s;}
+.bg span:nth-child(2){left:30%;animation-delay:2s;}
+.bg span:nth-child(3){left:50%;animation-delay:4s;}
+.bg span:nth-child(4){left:70%;animation-delay:1s;}
+.bg span:nth-child(5){left:90%;animation-delay:3s;}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-100px);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(120vh);
+opacity:0;
+}
+
+}
+
+/* PAGE */
+
+.page{
+display:none;
+min-height:100vh;
+padding:18px;
+overflow:auto;
+}
+
+.active{
+display:block;
+}
+
+/* LOGIN */
+
+.center{
+padding-top:50px;
+text-align:center;
+}
+
+.title{
+font-size:34px;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+.sub{
+margin-top:8px;
+opacity:.6;
+font-size:13px;
+}
+
+.lang{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-bottom:16px;
+}
+
+.lang button{
+background:#111827;
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:12px;
+}
+
+.users{
+margin-top:14px;
+background:#0f172a;
+padding:12px;
+border-radius:14px;
+border:1px solid #1e293b;
+font-size:13px;
+}
+
+input{
+width:100%;
+padding:16px;
+margin-top:14px;
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:18px;
+color:white;
+outline:none;
+}
+
+.loginBtn{
+width:100%;
+padding:16px;
+margin-top:14px;
+border:none;
+border-radius:18px;
+background:#2563eb;
+color:white;
+font-weight:bold;
+}
+
+.error{
+margin-top:12px;
+color:#ef4444;
+display:none;
+font-size:13px;
+}
+
+.boxes{
+display:flex;
+gap:10px;
+margin-top:22px;
+}
+
+.box{
+flex:1;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:18px 10px;
+border-radius:18px;
+font-size:12px;
+text-align:center;
+}
+
+/* COINS */
+
+.selectTitle{
+font-size:26px;
+font-weight:bold;
+margin-bottom:18px;
+}
+
+.coin{
+background:#0f172a;
+border:1px solid #1e293b;
+padding:15px;
+border-radius:18px;
+margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo{
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+}
+
+.btc{background:#f7931a;}
+.eth{background:#627eea;}
+.sol{background:#14f195;color:black;}
+.ton{background:#0098ea;}
+
+.tag{
+background:#2563eb;
+padding:4px 8px;
+border-radius:30px;
+font-size:9px;
+margin-bottom:5px;
+display:inline-block;
+}
+
+.coin h2{
+font-size:15px;
+}
+
+.coin p{
+font-size:11px;
+opacity:.5;
+margin-top:2px;
+}
+
+/* MINER */
+
+#minerPage{
 
 background:
 linear-gradient(
@@ -37,92 +236,35 @@ linear-gradient(
 
 }
 
-.page::before{
-
-content:"";
-position:absolute;
-inset:0;
-
-background:
-repeating-linear-gradient(
-75deg,
-rgba(0,140,255,.18) 0px,
-rgba(0,140,255,.18) 40px,
-transparent 40px,
-transparent 120px
-);
-
-filter:blur(2px);
-
-animation:bgmove 8s linear infinite;
-
-}
-
-@keyframes bgmove{
-
-0%{
-transform:translateX(0);
-}
-
-100%{
-transform:translateX(120px);
-}
-
-}
-
 .top{
-
 display:flex;
 align-items:center;
-gap:18px;
-
-position:relative;
-z-index:2;
-
+justify-content:space-between;
+margin-bottom:18px;
 }
 
-.backBtn{
-
-width:34px;
-height:34px;
-
-border-radius:50%;
-
+.energy{
 background:#172554;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:18px;
-
+padding:8px 14px;
+border-radius:30px;
+font-size:12px;
 }
 
-.title{
-
+.minerTitle{
 font-size:30px;
 font-weight:bold;
 letter-spacing:2px;
-
 }
 
 .foundTitle{
-
-margin-top:70px;
-
+margin-top:40px;
 font-size:42px;
 font-weight:bold;
-
 text-align:center;
-
-position:relative;
-z-index:2;
-
 }
 
 .scanBox{
-
-margin-top:40px;
+margin-top:30px;
 
 background:
 linear-gradient(
@@ -133,32 +275,19 @@ rgba(17,24,39,.9)
 
 border:2px solid rgba(96,165,250,.4);
 
-border-radius:40px;
+border-radius:36px;
 
 padding:22px;
-
-position:relative;
-z-index:2;
-
-backdrop-filter:blur(10px);
-
 }
 
 .count{
-
 text-align:center;
-
 font-size:18px;
-
 margin-bottom:16px;
-
-opacity:.9;
-
 }
 
 .terminal{
-
-height:260px;
+height:240px;
 
 background:
 linear-gradient(
@@ -180,109 +309,107 @@ line-height:1.9;
 color:#22c55e;
 
 font-family:monospace;
-
-box-shadow:
-inset 0 0 20px rgba(0,0,0,.5);
-
 }
 
 .terminal::-webkit-scrollbar{
 display:none;
 }
 
-.buttons{
+.analysis{
+margin-top:14px;
+background:#111827;
+padding:14px;
+border-radius:18px;
+border:1px solid #1e293b;
+font-size:12px;
+line-height:1.8;
+}
 
+.buttons{
 display:flex;
 gap:12px;
-
-margin-top:20px;
-
+margin-top:18px;
 }
 
 .btn{
-
 flex:1;
-
-padding:18px;
-
+padding:16px;
 border-radius:20px;
-
 text-align:center;
-
-font-size:16px;
+font-size:14px;
 font-weight:bold;
-
-}
-
-.withdrawBtn{
-
-background:
-linear-gradient(
-90deg,
-#4f46e5,
-#60a5fa
-);
-
-}
-
-.clearBtn{
-
-background:
-linear-gradient(
-90deg,
-#6b7280,
-#9ca3af
-);
-
-color:white;
-
 }
 
 .startBtn{
-
-margin-top:16px;
-
-width:100%;
-
-padding:18px;
-
-border:none;
-
-border-radius:24px;
-
-font-size:18px;
-font-weight:bold;
-
 background:
 linear-gradient(
 90deg,
 #1d4ed8,
 #60a5fa
 );
-
-color:white;
-
-position:relative;
-z-index:2;
-
 }
 
-.energy{
+.withdrawBtn{
+background:#0f172a;
+border:1px solid #334155;
+}
 
-position:absolute;
-top:24px;
-right:20px;
+/* ADMIN */
 
-background:#172554;
+.cardWrap{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:18px;
+}
 
-padding:8px 14px;
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+padding:18px;
+border-radius:18px;
+}
 
-border-radius:30px;
-
+.card h3{
 font-size:12px;
+opacity:.6;
+}
 
-z-index:2;
+.card p{
+margin-top:8px;
+font-size:22px;
+font-weight:bold;
+}
 
+.logs{
+margin-top:16px;
+height:260px;
+overflow:auto;
+background:#0f172a;
+border:1px solid #1e293b;
+padding:14px;
+border-radius:20px;
+font-size:11px;
+line-height:1.9;
+}
+
+.logs::-webkit-scrollbar{
+display:none;
+}
+
+/* BOTTOM */
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#0b1120;
+border-top:1px solid #1e293b;
+padding:12px;
+display:flex;
+justify-content:space-around;
+font-size:11px;
 }
 
 </style>
@@ -290,20 +417,160 @@ z-index:2;
 
 <body>
 
-<div class="page">
-
-<div class="energy">
-⚡ 27 ENERGY
+<div class="bg">
+<span>$</span>
+<span>₿</span>
+<span>◆</span>
+<span>◎</span>
+<span>$</span>
 </div>
 
-<div class="top">
+<!-- LOGIN -->
 
-<div class="backBtn">
-←
+<div class="page active" id="loginPage">
+
+<div class="center">
+
+<div class="lang">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('tr')">TR</button>
+</div>
+
+<div class="users">
+👤 <span id="usersText">Total Users</span>:
+<span id="users">17432</span>
 </div>
 
 <div class="title">
 CRYPTO ICE 3.0
+</div>
+
+<div class="sub" id="sub">
+Private blockchain scanner access
+</div>
+
+<input id="key" placeholder="Access Key">
+
+<button class="loginBtn" onclick="login()" id="continueBtn">
+Continue
+</button>
+
+<div class="error" id="error">
+Invalid key
+</div>
+
+<div class="boxes">
+
+<div class="box" onclick="telegram()">
+🔐
+<br><br>
+ACCESS
+</div>
+
+<div class="box" onclick="telegram()">
+🛠
+<br><br>
+SUPPORT
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SELECT -->
+
+<div class="page" id="selectPage">
+
+<div class="selectTitle">
+Blockchain Networks
+</div>
+
+<div class="coin" onclick="openMiner('Bitcoin')">
+
+<div class="left">
+
+<div class="logo btc">₿</div>
+
+<div>
+<div class="tag">RECOMMENDED</div>
+<h2>Bitcoin</h2>
+<p>High speed blockchain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openMiner('Ethereum')">
+
+<div class="left">
+
+<div class="logo eth">◆</div>
+
+<div>
+<h2>Ethereum</h2>
+<p>Encrypted smart chain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openMiner('Solana')">
+
+<div class="left">
+
+<div class="logo sol">◎</div>
+
+<div>
+<div class="tag">POPULAR</div>
+<h2>Solana</h2>
+<p>Fast blockchain network</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+<div class="coin" onclick="openMiner('TON')">
+
+<div class="left">
+
+<div class="logo ton">◉</div>
+
+<div>
+<h2>TON</h2>
+<p>Telegram blockchain</p>
+</div>
+
+</div>
+
+→
+
+</div>
+
+</div>
+
+<!-- MINER -->
+
+<div class="page" id="minerPage">
+
+<div class="top">
+
+<div class="minerTitle">
+CRYPTO ICE
+</div>
+
+<div class="energy">
+⚡ 27 ENERGY
 </div>
 
 </div>
@@ -316,9 +583,7 @@ FOUND
 
 <div class="count">
 FOUND:
-<span id="foundCount">
-0
-</span>
+<span id="foundCount">0</span>
 </div>
 
 <div class="terminal" id="logs">
@@ -327,28 +592,78 @@ FOUND:
 
 </div>
 
+<div class="analysis">
+
+• Encrypted node scanning<br>
+• Wallet hash analysis<br>
+• Secure blockchain indexing<br>
+• Network synchronization active
+
+</div>
+
 <div class="buttons">
+
+<div class="btn startBtn"
+id="scanBtn"
+onclick="scan()">
+START
+</div>
 
 <div class="btn withdrawBtn"
 onclick="telegram()">
-WITHDRAW
-</div>
-
-<div class="btn clearBtn"
-onclick="clearLogs()">
-CLEAR
+SUPPORT
 </div>
 
 </div>
 
 </div>
 
-<button class="startBtn"
-id="scanBtn"
-onclick="scan()">
-START SCAN
-</button>
+</div>
 
+<!-- ADMIN -->
+
+<div class="page" id="adminPage">
+
+<div class="selectTitle">
+ADMIN PANEL
+</div>
+
+<div class="cardWrap">
+
+<div class="card">
+<h3>Total Users</h3>
+<p id="adminUsers">17432</p>
+</div>
+
+<div class="card">
+<h3>Online</h3>
+<p id="onlineUsers">428</p>
+</div>
+
+<div class="card">
+<h3>Sessions</h3>
+<p>2.4K</p>
+</div>
+
+<div class="card">
+<h3>Networks</h3>
+<p>4</p>
+</div>
+
+</div>
+
+<div class="logs" id="adminLogs">
+
+[SYSTEM] Admin panel initialized.<br>
+
+</div>
+
+</div>
+
+<div class="bottom">
+<div>HOME</div>
+<div>SEARCH</div>
+<div onclick="telegram()">SUPPORT</div>
 </div>
 
 <script>
@@ -356,6 +671,7 @@ START SCAN
 let scanning=false;
 let interval;
 let found=0;
+let lang="en";
 
 function telegram(){
 
@@ -364,16 +680,43 @@ window.location.href=
 
 }
 
-function clearLogs(){
+function login(){
 
-document.getElementById("logs")
-.innerHTML=
-"[SYSTEM] Scanner cleared...<br>";
+let key=
+document.getElementById("key").value;
 
-document.getElementById("foundCount")
-.innerText="0";
+if(key==="admin66"){
 
-found=0;
+document.getElementById("loginPage")
+.classList.remove("active");
+
+document.getElementById("adminPage")
+.classList.add("active");
+
+}else if(key==="dearmaden66"){
+
+document.getElementById("loginPage")
+.classList.remove("active");
+
+document.getElementById("selectPage")
+.classList.add("active");
+
+}else{
+
+document.getElementById("error")
+.style.display="block";
+
+}
+
+}
+
+function openMiner(name){
+
+document.getElementById("selectPage")
+.classList.remove("active");
+
+document.getElementById("minerPage")
+.classList.add("active");
 
 }
 
@@ -389,7 +732,7 @@ if(!scanning){
 
 scanning=true;
 
-btn.innerText="STOP SCAN";
+btn.innerText="STOP";
 
 interval=setInterval(()=>{
 
@@ -401,7 +744,7 @@ Math.random()
 logs.innerHTML +=
 "[0x"+
 wallet.toUpperCase()+
-"] WALLET ANALYZED<br>";
+"] NODE ANALYZED<br>";
 
 if(Math.random()<0.08){
 
@@ -424,13 +767,101 @@ logs.scrollHeight;
 
 scanning=false;
 
-btn.innerText="START SCAN";
+btn.innerText="START";
 
 clearInterval(interval);
 
 }
 
 }
+
+function setLang(l){
+
+lang=l;
+
+if(l==="tr"){
+
+document.getElementById("usersText")
+.innerText=
+"Toplam Kullanıcı";
+
+document.getElementById("sub")
+.innerText=
+"Özel blockchain tarayıcı erişimi";
+
+document.getElementById("continueBtn")
+.innerText=
+"Devam Et";
+
+}else{
+
+document.getElementById("usersText")
+.innerText=
+"Total Users";
+
+document.getElementById("sub")
+.innerText=
+"Private blockchain scanner access";
+
+document.getElementById("continueBtn")
+.innerText=
+"Continue";
+
+}
+
+}
+
+setInterval(()=>{
+
+let users=
+parseInt(
+document.getElementById("users").innerText
+);
+
+users +=
+Math.floor(Math.random()*2);
+
+document.getElementById("users")
+.innerText=users;
+
+document.getElementById("adminUsers")
+.innerText=users;
+
+},4000);
+
+setInterval(()=>{
+
+let logs=
+document.getElementById("adminLogs");
+
+if(logs){
+
+let random=
+Math.floor(Math.random()*999);
+
+let actions=[
+
+"connected",
+"opened scanner",
+"selected Bitcoin",
+"started session",
+"changed network"
+
+];
+
+let action=
+actions[Math.floor(Math.random()*actions.length)];
+
+logs.innerHTML +=
+"[LIVE] user_"+random+
+" "+action+".<br>";
+
+logs.scrollTop=
+logs.scrollHeight;
+
+}
+
+},3000);
 
 </script>
 
