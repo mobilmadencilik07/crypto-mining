@@ -8,7 +8,7 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 *{
 margin:0;
@@ -72,7 +72,7 @@ transform:rotate(360deg);
 .splash h1{
 margin-top:25px;
 font-size:32px;
-font-weight:600;
+font-weight:700;
 }
 
 .splash p{
@@ -125,7 +125,7 @@ opacity:0.9;
 
 .title{
 font-size:38px;
-font-weight:500;
+font-weight:600;
 letter-spacing:-1px;
 }
 
@@ -157,7 +157,7 @@ margin-top:18px;
 background:linear-gradient(90deg,#60a5fa,#2563eb);
 color:white;
 font-size:16px;
-font-weight:500;
+font-weight:600;
 }
 
 .error{
@@ -180,7 +180,7 @@ border:1px solid #1e293b;
 padding:28px 10px;
 border-radius:28px;
 font-size:14px;
-font-weight:500;
+font-weight:600;
 backdrop-filter:blur(12px);
 }
 
@@ -189,26 +189,9 @@ font-size:28px;
 margin-bottom:16px;
 }
 
-.boostCard{
-margin-top:18px;
-background:linear-gradient(90deg,#172554,#1d4ed8);
-padding:20px;
-border-radius:24px;
-font-size:17px;
-font-weight:500;
-border:1px solid #3b82f6;
-}
-
-.boostCard span{
-display:block;
-margin-top:8px;
-font-size:13px;
-opacity:0.7;
-}
-
 .selectTitle{
 font-size:28px;
-font-weight:500;
+font-weight:600;
 margin-bottom:22px;
 }
 
@@ -235,10 +218,11 @@ font-weight:400;
 .stat p{
 margin-top:10px;
 font-size:18px;
-font-weight:500;
+font-weight:600;
 }
 
 .coin{
+position:relative;
 background:#0f172a;
 border:1px solid #1e293b;
 padding:18px;
@@ -247,6 +231,34 @@ margin-bottom:14px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+transition:0.2s;
+}
+
+.coin:active{
+transform:scale(0.98);
+}
+
+.coinSub{
+font-size:12px;
+opacity:0.55;
+margin-top:4px;
+}
+
+.tag{
+position:absolute;
+top:-8px;
+right:16px;
+background:#2563eb;
+padding:6px 10px;
+border-radius:30px;
+font-size:10px;
+font-weight:700;
+letter-spacing:0.5px;
+}
+
+.recommended{
+border:1px solid #2563eb;
+box-shadow:0 0 25px rgba(37,99,235,0.12);
 }
 
 .left{
@@ -263,16 +275,19 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:22px;
-font-weight:600;
+font-weight:700;
 }
 
 .btc{background:#f7931a;}
 .eth{background:#627eea;}
 .sol{background:#14f195;color:black;}
+.bnb{background:#f3ba2f;color:black;}
+.xrp{background:#111827;}
+.ton{background:#0098ea;}
 
 .coin h2{
 font-size:17px;
-font-weight:500;
+font-weight:600;
 }
 
 .arrow{
@@ -289,7 +304,7 @@ margin-bottom:18px;
 
 .top h1{
 font-size:28px;
-font-weight:500;
+font-weight:600;
 }
 
 .energy{
@@ -302,7 +317,7 @@ border:1px solid #1e293b;
 
 .scanTitle{
 font-size:30px;
-font-weight:500;
+font-weight:600;
 margin-bottom:20px;
 }
 
@@ -325,7 +340,7 @@ display:none;
 .found{
 margin-top:20px;
 font-size:34px;
-font-weight:500;
+font-weight:600;
 }
 
 .green{
@@ -358,6 +373,17 @@ animation:move 4s linear infinite;
 100%{transform:translateX(20%) rotate(-6deg);}
 }
 
+.miniBoost{
+margin-top:16px;
+background:#111827;
+border:1px solid #334155;
+padding:14px;
+border-radius:18px;
+font-size:13px;
+text-align:center;
+opacity:0.9;
+}
+
 .buttons{
 display:flex;
 gap:14px;
@@ -370,7 +396,7 @@ padding:20px;
 border-radius:24px;
 text-align:center;
 font-size:15px;
-font-weight:500;
+font-weight:600;
 }
 
 .start{
@@ -414,7 +440,7 @@ z-index:999;
 .popup h2{
 font-size:24px;
 margin-bottom:14px;
-font-weight:500;
+font-weight:600;
 }
 
 .popup p{
@@ -499,11 +525,6 @@ SUPPORT
 
 </div>
 
-<div class="boostCard" onclick="openTelegram()">
-⚡ BOOST ENERGY
-<span>Upgrade scanner speed</span>
-</div>
-
 </div>
 
 </div>
@@ -528,28 +549,112 @@ Blockchain Networks
 
 </div>
 
-<div class="coin" onclick="openMiner('Bitcoin')">
+<div class="coin recommended" onclick="openMiner('Bitcoin')">
+
+<div class="tag">RECOMMENDED</div>
+
 <div class="left">
+
 <div class="logo btc">₿</div>
+
+<div>
 <h2>Bitcoin</h2>
+<p class="coinSub">High speed blockchain</p>
 </div>
+
+</div>
+
 <div class="arrow">→</div>
+
 </div>
 
 <div class="coin" onclick="openMiner('Ethereum')">
+
 <div class="left">
+
 <div class="logo eth">◆</div>
+
+<div>
 <h2>Ethereum</h2>
-</div>
-<div class="arrow">→</div>
+<p class="coinSub">Encrypted smart chain</p>
 </div>
 
-<div class="coin" onclick="openMiner('Solana')">
-<div class="left">
-<div class="logo sol">◎</div>
-<h2>Solana</h2>
 </div>
+
 <div class="arrow">→</div>
+
+</div>
+
+<div class="coin recommended" onclick="openMiner('Solana')">
+
+<div class="tag">POPULAR</div>
+
+<div class="left">
+
+<div class="logo sol">◎</div>
+
+<div>
+<h2>Solana</h2>
+<p class="coinSub">Fast network scanner</p>
+</div>
+
+</div>
+
+<div class="arrow">→</div>
+
+</div>
+
+<div class="coin" onclick="openMiner('BNB')">
+
+<div class="left">
+
+<div class="logo bnb">◈</div>
+
+<div>
+<h2>BNB</h2>
+<p class="coinSub">Secure wallet chain</p>
+</div>
+
+</div>
+
+<div class="arrow">→</div>
+
+</div>
+
+<div class="coin" onclick="openMiner('XRP')">
+
+<div class="left">
+
+<div class="logo xrp">✕</div>
+
+<div>
+<h2>XRP</h2>
+<p class="coinSub">Low latency transfers</p>
+</div>
+
+</div>
+
+<div class="arrow">→</div>
+
+</div>
+
+<div class="coin recommended" onclick="openMiner('TON')">
+
+<div class="tag">TRENDING</div>
+
+<div class="left">
+
+<div class="logo ton">◉</div>
+
+<div>
+<h2>TON</h2>
+<p class="coinSub">Telegram blockchain</p>
+</div>
+
+</div>
+
+<div class="arrow">→</div>
+
 </div>
 
 </div>
@@ -574,6 +679,10 @@ Found:
 
 <div class="chart">
 <div class="line"></div>
+</div>
+
+<div class="miniBoost" onclick="openTelegram()">
+⚡ BOOST SCANNER SPEED
 </div>
 
 <div class="buttons">
